@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Steel and Blood - A dark fantasy game by Hordalusa Studio.">
+    <title>Steel and Blood | Hordalusa Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Outfit:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="glass-nav">
+        <div class="container nav-container">
+            <a href="#" class="logo">HORDA<span style="color: var(--primary-color); text-shadow: none;">LUSA</span></a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">Studio</a></li>
+                    <li><a href="#game">Steel and Blood</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content fade-in">
+            <h1 class="glitch" data-text="STEEL AND BLOOD">STEEL AND BLOOD</h1>
+            <p class="subtitle">Forged in Battle. Bound by Fate.</p>
+            <a href="#game" class="cta-button">Explore the Prototype</a>
+        </div>
+    </section>
+
+    <!-- About Studio Section -->
+    <section id="about" class="section dark-section">
+        <div class="container">
+            <h2 class="section-title fade-in">The Studio</h2>
+            <div class="content-grid">
+                <div class="text-content fade-in">
+                    <p>Hordalusa is an independent game development collective driven by passion and grit. While we are
+                        currently in the process of certification, our dedication to crafting immersive experiences is
+                        unwavering.</p>
+                    <p>We specialize in dark fantasy worlds where player choice matters and combat feels visceral.</p>
+                </div>
+                <div class="visual-content fade-in">
+                    <div class="glass-card">
+                        <h3>Indie Spirit</h3>
+                        <p>Raw creativity, untamed by corporate mandates.</p>
+                    </div>
+                    <div class="glass-card">
+                        <h3>Prototype Focus</h3>
+                        <p>Rapid iteration to find the fun faster.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Section -->
+    <section id="game" class="section crimson-section">
+        <div class="container">
+            <h2 class="section-title fade-in">Project: Steel and Blood</h2>
+            <div class="game-showcase">
+                <div class="game-info fade-in">
+                    <p class="lead">A visceral action-RPG prototype currently in development.</p>
+                    <ul class="features-list">
+                        <li>Dynamic Combat System</li>
+                        <li>Dark Fantasy Setting</li>
+                        <li>Brutal Execution Mechanics</li>
+                    </ul>
+                    <div class="status-indicator">
+                        <span class="status-dot"></span> Current Phase: <span class="status-text">Alpha Prototype</span>
+                    </div>
+                </div>
+                <!-- Placeholder for game screenshot or video if available, using CSS to style -->
+                <div class="game-visual fade-in">
+                    <div class="visual-placeholder">
+                        <span>Gameplay Footage Coming Soon</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section dark-section footer-wrapper">
+        <div class="container">
+            <div class="contact-layout">
+                <div class="contact-info fade-in">
+                    <h2>Get in Touch</h2>
+                    <p>Interested in our work or looking to collaborate? Send us a message.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon">Twitter</a>
+                        <a href="#" class="social-icon">Instagram</a>
+                        <a href="#" class="social-icon">Discord</a>
+                        <a href="#" class="social-icon">LinkedIn</a>
+                    </div>
+                    <div class="direct-contact">
+                        <p>Email: <a href="mailto:contact@hordalusa.com">contact@hordalusa.com</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-form-container fade-in">
+                    <form class="glass-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="container footer-content">
+                <p>&copy; 2025 Hordalusa Studio. All rights reserved.</p>
+                <p class="disclaimer">"Steel and Blood" is a prototype in active development.</p>
+            </div>
+        </footer>
+    </section>
+
+</body>
+
+</html>
