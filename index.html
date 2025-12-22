@@ -43,9 +43,15 @@
         <div class="hero-overlay"></div>
         <div class="hero-content fade-in">
             <h1 class="glitch" data-text="STEEL AND BLOOD">STEEL AND BLOOD</h1>
-            <p class="subtitle">Forged in Battle. Bound by Fate.</p>
-            <a href="#game" class="cta-button">Explore the Prototype</a>
+            <p class="subtitle">Rise from Slave to Legend. Win the Crowd.</p>
+            <a href="#game" class="cta-button">Enter the Arena</a>
         </div>
+        <a href="#about" class="scroll-down-indicator">
+            <svg viewBox="0 0 24 24" fill="none" class="chevron-down">
+                <path d="M7 13L12 18L17 13M7 6L12 11L17 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+        </a>
     </section>
 
     <!-- About Studio Section -->
@@ -57,7 +63,8 @@
                     <p>Hordalusa is an independent game development collective driven by passion and grit. While we are
                         currently in the process of certification, our dedication to crafting immersive experiences is
                         unwavering.</p>
-                    <p>We specialize in dark fantasy worlds where player choice matters and combat feels visceral.</p>
+                    <p>We specialize in creating engaging worlds where player choice matters and mechanics feel distinct
+                        and impactful.</p>
                 </div>
                 <div class="visual-content fade-in">
                     <div class="glass-card">
@@ -79,20 +86,31 @@
             <h2 class="section-title fade-in">Project: Steel and Blood</h2>
             <div class="game-showcase">
                 <div class="game-info fade-in">
-                    <p class="lead">A visceral action-RPG prototype currently in development.</p>
+                    <p class="lead">A physics-based gladiator roguelite where every hit carries weight.</p>
+                    <p class="game-desc">You are thrust into the brutal world of the Ludus with nothing but your fists.
+                        This isn't just a hack-and-slash; it's a physical simulation of combat where your weapon's
+                        momentum and the crowd's judgment determine your fate.</p>
+
                     <ul class="features-list">
-                        <li>Dynamic Combat System</li>
-                        <li>Dark Fantasy Setting</li>
-                        <li>Brutal Execution Mechanics</li>
+                        <li><strong>Visceral Physics Combat:</strong> Active ragdolls and IK-driven impacts. No two
+                            fights are the same.</li>
+                        <li><strong>The Crowd is Alive:</strong> Win their favor for buffs, or face their wrath as they
+                            throw debris.</li>
+                        <li><strong>Zero to Hero:</strong> Evolve from a lowly slave to a legend, upgrading stats and
+                            gear.</li>
+                        <li><strong>Risk & Reward:</strong> Dynamic difficulty scales with your reputation.</li>
                     </ul>
-                    <div class="status-indicator">
+
+                    <div class="status-indicator" style="margin-top: 2rem;">
                         <span class="status-dot"></span> Current Phase: <span class="status-text">Alpha Prototype</span>
                     </div>
                 </div>
                 <!-- Placeholder for game screenshot or video if available, using CSS to style -->
                 <div class="game-visual fade-in">
-                    <div class="visual-placeholder">
-                        <span>Gameplay Footage Coming Soon</span>
+                    <div class="gallery-grid">
+                        <img src="gameplay1.png" alt="Steel and Blood Gameplay 1" class="gallery-img">
+                        <img src="gameplay2.png" alt="Steel and Blood Gameplay 2" class="gallery-img">
+                        <img src="gameplay3.png" alt="Steel and Blood Gameplay 3" class="gallery-img">
                     </div>
                 </div>
             </div>
@@ -102,37 +120,17 @@
     <!-- Contact Section -->
     <section id="contact" class="section dark-section footer-wrapper">
         <div class="container">
-            <div class="contact-layout">
+            <div class="contact-layout centered-layout">
                 <div class="contact-info fade-in">
                     <h2>Get in Touch</h2>
                     <p>Interested in our work or looking to collaborate? Send us a message.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-icon">Twitter</a>
-                        <a href="#" class="social-icon">Instagram</a>
-                        <a href="#" class="social-icon">Discord</a>
-                        <a href="#" class="social-icon">LinkedIn</a>
+                    <div class="social-links centered-socials">
+                        <a href="#" class="social-icon">X (Twitter)</a>
+                        <a target="_blank" href="https://instagram.com/hordalusa" class="social-icon">Instagram</a>
                     </div>
                     <div class="direct-contact">
                         <p>Email: <a href="mailto:contact@hordalusa.com">contact@hordalusa.com</a></p>
                     </div>
-                </div>
-
-                <div class="contact-form-container fade-in">
-                    <form class="glass-form" id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Send Message</button>
-                    </form>
                 </div>
             </div>
         </div>
@@ -144,6 +142,9 @@
             </div>
         </footer>
     </section>
+
+    <!-- Back to Top Button -->
+    <a href="#home" class="back-to-top" id="backToTop">↑</a>
 
 </body>
 

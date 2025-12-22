@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // Intersection Observer for Fade-in Animations
     const observerOptions = {
         threshold: 0.1,
@@ -30,40 +30,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Contact Form Handling
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Get values
-            const name = document.getElementById('name').value;
-            const message = document.getElementById('message').value;
 
-            // Simulate sending (In a real app, you'd use fetch/axios here)
-            console.log(`Message from ${name}: ${message}`);
-            
-            const btn = contactForm.querySelector('.submit-btn');
-            const originalText = btn.innerText;
-            
-            btn.innerText = 'Sending...';
-            btn.disabled = true;
 
-            setTimeout(() => {
-                btn.innerText = 'Message Sent';
-                btn.style.background = '#4CAF50'; // Green success
-                
-                // Reset form
-                contactForm.reset();
-                
-                setTimeout(() => {
-                    btn.innerText = originalText;
-                    btn.style.background = ''; // Revert to CSS default
-                    btn.disabled = false;
-                }, 3000);
-            }, 1000);
-        });
-    }
+    // Back to Top Visibility
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
 
     // Smooth Scroll for Internal Links (just to be safe across browsers)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
