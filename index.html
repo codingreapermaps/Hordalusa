@@ -4,147 +4,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Steel and Blood - A dark fantasy game by Hordalusa Studio.">
-    <title>Steel and Blood | Hordalusa Studio</title>
+    <meta name="description"
+        content="Hordalusa is an independent studio from Portugal. We build games and the technology behind them, from the ground up.">
+    <meta name="theme-color" content="#000000">
+    <title>Hordalusa</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Outfit:wght@300;400;600&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
+    <script src="loader.js" defer></script>
 </head>
 
-<body>
+<body class="loading">
 
-    <!-- Navigation -->
-    <header class="glass-nav">
-        <div class="container nav-container">
-            <a href="#" class="logo">HORDA<span style="color: var(--primary-color); text-shadow: none;">LUSA</span></a>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">Studio</a></li>
-                    <li><a href="#game">Steel and Blood</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-name"><span>Horda</span><span>Lusa</span></div>
+        <div class="loader-stage"></div>
+        <div class="loader-line"></div>
+    </div>
+
+
+    <header class="masthead">
+        <a href="index.html" class="mark">Hordalusa</a>
+        <nav class="menu">
+            <a href="index.html">Studio</a>
+            <a href="projects.html">Work</a>
+            <a href="lusa-engine.html">Engine</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <button class="menu-btn" aria-expanded="false">Menu</button>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content fade-in">
-            <h1 class="glitch" data-text="STEEL AND BLOOD">STEEL AND BLOOD</h1>
-            <p class="subtitle">Rise from Slave to Legend. Win the Crowd.</p>
-            <a href="#game" class="cta-button">Enter the Arena</a>
+    <!-- ===================== STAGE ===================== -->
+    <section class="stage">
+        <div class="stage-media">
+            <img src="engine/render-02.png" alt="" fetchpriority="high">
         </div>
-        <a href="#about" class="scroll-down-indicator">
-            <svg viewBox="0 0 24 24" fill="none" class="chevron-down">
-                <path d="M7 13L12 18L17 13M7 6L12 11L17 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round" />
-            </svg>
-        </a>
+        <div class="stage-content">
+            <h1 class="title-xl">Hordalusa</h1>
+            <p class="body-lg">An independent studio from Portugal, building games and
+                the technology behind them.</p>
+        </div>
     </section>
 
-    <!-- About Studio Section -->
-    <section id="about" class="section dark-section">
-        <div class="container">
-            <h2 class="section-title fade-in">The Studio</h2>
-            <div class="content-grid">
-                <div class="text-content fade-in">
-                    <p>Hordalusa is an independent game development collective driven by passion and grit. While we are
-                        currently in the process of certification, our dedication to crafting immersive experiences is
-                        unwavering.</p>
-                    <p>We specialize in creating engaging worlds where player choice matters and mechanics feel distinct
-                        and impactful.</p>
+    <!-- ===================== STATEMENT ===================== -->
+    <section class="statement" id="studio">
+        <div class="statement-inner">
+            <span class="meta rise">The studio</span>
+            <p class="statement-lead rise">We build from the ground up, because owning the
+                technology is what makes the work our own.</p>
+
+            <div class="statement-body rise">
+                <p>We write our own renderers, our own maths and our own tools. It takes longer,
+                    and it gives us room that licensed technology doesn't.</p>
+                <p>We work at our own pace, on our own terms, and we show things when they're
+                    ready to be seen.</p>
+            </div>
+
+            <div class="tenets">
+                <div class="tenet rise">
+                    <h3>Build it to understand it</h3>
+                    <p>We'd rather know how something works than only how to use it.</p>
                 </div>
-                <div class="visual-content fade-in">
-                    <div class="glass-card">
-                        <h3>Indie Spirit</h3>
-                        <p>Raw creativity, untamed by corporate mandates.</p>
-                    </div>
-                    <div class="glass-card">
-                        <h3>Prototype Focus</h3>
-                        <p>Rapid iteration to find the fun faster.</p>
-                    </div>
+                <div class="tenet rise">
+                    <h3>Depth over speed</h3>
+                    <p>The long route leaves us more to work with.</p>
+                </div>
+                <div class="tenet rise">
+                    <h3>Small and finished</h3>
+                    <p>Better to complete something focused than start something vast.</p>
+                </div>
+                <div class="tenet rise">
+                    <h3>Own the tools</h3>
+                    <p>No licences, no royalties, no black boxes we can't open.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Game Section -->
-    <section id="game" class="section crimson-section">
-        <div class="container">
-            <h2 class="section-title fade-in">Project: Steel and Blood</h2>
-            <div class="game-showcase">
-                <div class="game-info fade-in">
-                    <p class="lead">A physics-based gladiator roguelite where every hit carries weight.</p>
-                    <p class="game-desc">You are thrust into the brutal world of the Ludus with nothing but your fists.
-                        This isn't just a hack-and-slash; it's a physical simulation of combat where your weapon's
-                        momentum and the crowd's judgment determine your fate.</p>
+    <!-- ===================== WORK ===================== -->
+    <a href="lusa-engine.html" class="band">
+        <div class="band-media">
+            <img src="engine/render-01.png" alt="A render from Lusa Engine" loading="lazy">
+        </div>
+        <div class="band-content">
+            <span class="meta">In development</span>
+            <h2 class="title-lg">Lusa Engine</h2>
+            <p>Our own 3D engine, built in-house. The foundation everything we make next
+                will be built on.</p>
+            <span class="go">Learn more &rarr;</span>
+        </div>
+    </a>
 
-                    <ul class="features-list">
-                        <li><strong>Visceral Physics Combat:</strong> Active ragdolls and IK-driven impacts. No two
-                            fights are the same.</li>
-                        <li><strong>The Crowd is Alive:</strong> Win their favor for buffs, or face their wrath as they
-                            throw debris.</li>
-                        <li><strong>Zero to Hero:</strong> Evolve from a lowly slave to a legend, upgrading stats and
-                            gear.</li>
-                        <li><strong>Risk & Reward:</strong> Dynamic difficulty scales with your reputation.</li>
-                    </ul>
+    <a href="steel-and-blood.html" class="band">
+        <div class="band-media">
+            <img src="gameplay1.png" alt="Steel and Blood" loading="lazy">
+        </div>
+        <div class="band-content">
+            <span class="meta">Prototype &middot; 2025</span>
+            <h2 class="title-lg">Steel and Blood</h2>
+            <p>A physics-based gladiator roguelite where every hit carries weight.</p>
+            <span class="go">View the archive &rarr;</span>
+        </div>
+    </a>
 
-                    <div class="status-indicator" style="margin-top: 2rem;">
-                        <span class="status-dot"></span> Current Phase: <span class="status-text">Alpha Prototype</span>
-                    </div>
-                </div>
-                <!-- Placeholder for game screenshot or video if available, using CSS to style -->
-                <div class="game-visual fade-in">
-                    <div class="gallery-grid">
-                        <img src="gameplay1.png" alt="Steel and Blood Gameplay 1" class="gallery-img">
-                        <img src="gameplay2.png" alt="Steel and Blood Gameplay 2" class="gallery-img">
-                        <img src="gameplay3.png" alt="Steel and Blood Gameplay 3" class="gallery-img">
-                    </div>
-                </div>
-            </div>
+    <section class="band band-plain">
+        <div class="band-content">
+            <span class="meta">Next</span>
+            <h2 class="title-lg">In planning</h2>
+            <p>A first-person horror project on Lusa Engine. Enclosed spaces, a flashlight,
+                and very little light. More when the time is right.</p>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section dark-section footer-wrapper">
-        <div class="container">
-            <div class="contact-layout centered-layout">
-                <div class="contact-info fade-in">
-                    <h2>Get in Touch</h2>
-                    <p>Interested in our work or looking to collaborate? Send us a message.</p>
-                    <div class="social-links centered-socials">
-                        <a href="#" class="social-icon">X (Twitter)</a>
-                        <a target="_blank" href="https://instagram.com/hordalusa" class="social-icon">Instagram</a>
-                    </div>
-                    <div class="direct-contact">
-                        <p>Email: <a href="mailto:contact@hordalusa.com">contact@hordalusa.com</a></p>
-                    </div>
+    <!-- ===================== FOOT ===================== -->
+    <footer class="foot" id="contact">
+        <div class="foot-inner">
+            <a href="mailto:contact@hordalusa.com" class="foot-cta">Get in touch</a>
+
+            <div class="foot-rows">
+                <div class="foot-col">
+                    <span class="meta">Contact</span>
+                    <a href="mailto:contact@hordalusa.com">contact@hordalusa.com</a>
+                </div>
+                <div class="foot-col">
+                    <span class="meta">Elsewhere</span>
+                    <a href="https://instagram.com/hordalusa" target="_blank" rel="noopener">Instagram</a>
+                </div>
+                <div class="foot-col">
+                    <span class="meta">Site</span>
+                    <a href="projects.html">Work</a>
+                    <a href="lusa-engine.html">Lusa Engine</a>
+                    <a href="steel-and-blood.html">Steel and Blood</a>
                 </div>
             </div>
-        </div>
 
-        <footer>
-            <div class="container footer-content">
-                <p>&copy; 2025 Hordalusa Studio. All rights reserved.</p>
-                <p class="disclaimer">"Steel and Blood" is a prototype in active development.</p>
+            <div class="foot-base">
+                <span>&copy; 2026 Hordalusa</span>
+                <span>Portugal</span>
             </div>
-        </footer>
-    </section>
-
-    <!-- Back to Top Button -->
-    <a href="#home" class="back-to-top" id="backToTop">↑</a>
+        </div>
+    </footer>
 
 </body>
 

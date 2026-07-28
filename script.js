@@ -1,57 +1,47 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Intersection Observer for Fade-in Animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px"
-    };
+    /* --- Reveal on scroll -------------------------------------------------- */
+    const items = document.querySelectorAll('.rise');
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
+    if ('IntersectionObserver' in window && items.length) {
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach((e, i) => {
+                if (!e.isIntersecting) return;
+                // A small stagger so grouped items don't all snap in at once.
+                e.target.style.transitionDelay = `${Math.min(i * 70, 280)}ms`;
+                e.target.classList.add('in');
+                io.unobserve(e.target);
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+        items.forEach(el => io.observe(el));
+    } else {
+        items.forEach(el => el.classList.add('in'));
+    }
+
+    /* --- Mobile menu ------------------------------------------------------- */
+    const btn = document.querySelector('.menu-btn');
+    const menu = document.querySelector('.menu');
+
+    if (btn && menu) {
+        const setOpen = (open) => {
+            menu.classList.toggle('open', open);
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+            btn.textContent = open ? 'Close' : 'Menu';
+            document.body.style.overflow = open ? 'hidden' : '';
+        };
+
+        btn.addEventListener('click', () => setOpen(!menu.classList.contains('open')));
+        menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') setOpen(false);
         });
-    }, observerOptions);
+    }
 
-    const fadeElements = document.querySelectorAll('.fade-in');
-    fadeElements.forEach(el => observer.observe(el));
-
-
-    // Sticky Header Effect
-    const header = document.querySelector('.glass-nav');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.style.background = 'rgba(10, 10, 10, 0.95)';
-            header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.5)';
-        } else {
-            header.style.background = 'rgba(10, 10, 10, 0.8)';
-            header.style.boxShadow = 'none';
-        }
-    });
-
-
-
-    // Back to Top Visibility
-    const backToTop = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 500) {
-            backToTop.classList.add('visible');
-        } else {
-            backToTop.classList.remove('visible');
-        }
-    });
-
-    // Smooth Scroll for Internal Links (just to be safe across browsers)
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        });
+    /* --- Mark the current page -------------------------------------------- */
+    const here = location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.menu a').forEach(a => {
+        const href = a.getAttribute('href');
+        if (href && href.split('#')[0] === here) a.setAttribute('aria-current', 'page');
     });
 });
