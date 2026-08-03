@@ -718,6 +718,147 @@ body.loading {
 }
 
 /* -----------------------------------------------------------------------------
+   Devlog
+
+   Uma linha temporal de entradas. A régua vertical é um pseudo-elemento da
+   lista, não de cada entrada -- assim ela é contínua e não tem falhas entre
+   blocos, seja qual for o número de entradas.
+   -------------------------------------------------------------------------- */
+.devlog {
+    padding: clamp(4rem, 10vw, 9rem) var(--gutter);
+    border-top: 1px solid var(--line);
+}
+
+.devlog-head {
+    max-width: 68rem;
+    margin: 0 auto clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.devlog-head .title-md {
+    margin-top: 0.6rem;
+}
+
+.log-list {
+    max-width: 68rem;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* A régua. Alinhada com o centro do marcador de cada entrada. */
+.log-list::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6rem;
+    bottom: 0.6rem;
+    width: 1px;
+    background: linear-gradient(to bottom,
+        var(--line) 0%,
+        var(--line) 85%,
+        transparent 100%);
+}
+
+.log {
+    position: relative;
+    padding-left: clamp(1.75rem, 4vw, 3.5rem);
+    padding-bottom: clamp(3rem, 7vw, 5.5rem);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.log:last-child {
+    padding-bottom: 0;
+}
+
+/* O marcador sobre a régua. */
+.log::before {
+    content: '';
+    position: absolute;
+    left: -3px;
+    top: 0.55rem;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--white);
+}
+
+.log-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+.log-date {
+    font-family: var(--body);
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--grey);
+}
+
+/* O número da entrada, grande e apagado -- marca a passagem do tempo sem
+   competir com o título. */
+.log-no {
+    font-family: var(--display);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 0.8;
+    color: rgba(255, 255, 255, 0.07);
+    user-select: none;
+}
+
+.log-title {
+    font-family: var(--display);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    line-height: 1.05;
+    margin-bottom: 1rem;
+}
+
+.log-body p {
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.65;
+    max-width: 54ch;
+}
+
+.log-body p + p {
+    margin-top: 0.9rem;
+}
+
+.log-media img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid var(--line);
+}
+
+/* A partir de ecrãs médios, texto e imagem lado a lado. O número sobe para a
+   coluna da esquerda, junto à data. */
+@media (min-width: 900px) {
+    .log {
+        grid-template-columns: 9rem 1fr;
+        column-gap: clamp(2rem, 4vw, 3.5rem);
+        align-items: start;
+    }
+
+    .log-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        grid-row: 1;
+    }
+
+    .log-body,
+    .log-media {
+        grid-column: 2;
+    }
+
+    .log-media {
+        margin-top: 1.75rem;
+    }
+}
+
+/* -----------------------------------------------------------------------------
    Reveal
    -------------------------------------------------------------------------- */
 .rise {

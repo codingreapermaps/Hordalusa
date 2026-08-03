@@ -33,6 +33,7 @@
             <a href="index.html">Studio</a>
             <a href="projects.html">Work</a>
             <a href="lusa-engine.html">Engine</a>
+            <a href="lusa-engine.html#devlog">Devlog</a>
             <a href="index.html#contact">Contact</a>
         </nav>
         <button class="menu-btn" aria-expanded="false">Menu</button>
@@ -40,7 +41,8 @@
 
     <section class="stage">
         <div class="stage-media">
-            <img src="engine/render-01.png" alt="" fetchpriority="high">
+            <img src="engine/render-01.png" alt=""
+                 fetchpriority="high" width="1268" height="710">
         </div>
         <div class="stage-content">
             <span class="meta">In development</span>
@@ -57,26 +59,96 @@
             <div class="statement-body rise">
                 <p>Lusa Engine is built in-house, from the ground up. It's the foundation our
                     upcoming projects are being made on.</p>
-                <p>We'll share more as it takes shape.</p>
+                <p>Building it ourselves means we answer to the game rather than to a toolset.
+                    When a scene calls for something the engine cannot yet do, we write it
+                    &mdash; and it arrives shaped for the game we are making, not adapted from
+                    someone else's.</p>
             </div>
         </div>
     </section>
 
     <div class="strip">
-        <img src="engine/render-01.png" alt="A model rendered in Lusa Engine" loading="lazy">
         <img src="engine/render-02.png" alt="A corridor lit in Lusa Engine" loading="lazy">
         <img src="engine/render-03.png" alt="A scene rendered in Lusa Engine" loading="lazy">
     </div>
     <p class="caption">Real-time renders from the engine.</p>
 
-    <section class="statement">
-        <div class="statement-inner">
-            <span class="meta rise">Current focus</span>
-            <div class="statement-body rise" style="margin-top:1.5rem">
-                <p>The work is on atmosphere, lighting, shadow, and the feeling of moving
-                    through a space, alongside the tools that let us build levels quickly.</p>
-                <p>The first game on the engine is a first-person horror project.</p>
-            </div>
+    <!-- =========================================================================
+         DEVLOG
+
+         Entradas por ordem inversa: a mais recente em cima.
+
+         PARA ACRESCENTAR UMA ENTRADA NOVA, copiar um bloco <article class="log">
+         inteiro e colá-lo LOGO A SEGUIR à abertura de <div class="log-list">.
+         Nada mais precisa de mudar -- a numeração e as linhas são automáticas.
+
+         A imagem é opcional: sem <div class="log-media">, a entrada ocupa a
+         largura toda do texto.
+         ====================================================================== -->
+    <section class="devlog" id="devlog">
+        <div class="devlog-head">
+            <span class="meta">Devlog</span>
+            <h2 class="title-md">Notes from the build</h2>
+        </div>
+
+        <div class="log-list">
+
+            <article class="log rise">
+                <div class="log-meta">
+                    <span class="log-date">August 2026</span>
+                    <span class="log-no">03</span>
+                </div>
+                <div class="log-body">
+                    <h3 class="log-title">Learning to be dark</h3>
+                    <p>A street at night is a hard thing to get right. Too little light and the
+                        world disappears; too much and the dark stops meaning anything.</p>
+                    <p>Lamps now burn rather than glow, and light falls off the way light does
+                        &mdash; so the pool under a lamp post is worth walking toward, and the
+                        stretch between two of them is worth hesitating over. Fog holds back
+                        until the middle distance, leaving the porch in front of you sharp and
+                        the end of the road gone entirely.</p>
+                    <p>A place that behaves like a place. Which is the whole job, for a game
+                        about a street you would rather not be standing on.</p>
+                </div>
+                <div class="log-media">
+                    <img src="engine/render-01.png"
+                         alt="A street at night, grass in the foreground, a lit lamp in the distance"
+                         loading="lazy">
+                </div>
+            </article>
+
+            <article class="log rise">
+                <div class="log-meta">
+                    <span class="log-date">August 2026</span>
+                    <span class="log-no">02</span>
+                </div>
+                <div class="log-body">
+                    <h3 class="log-title">Ground that grows itself</h3>
+                    <p>Grass is no longer something anyone places. An artist marks where it
+                        belongs and the engine fills it in as you walk &mdash; leaning away from
+                        fences, thickening where nothing has trodden it down, moving when the
+                        wind moves.</p>
+                    <p>None of it is placed by hand, and none of it is the same twice. It costs
+                        a single instruction to draw a field of it.</p>
+                </div>
+            </article>
+
+            <article class="log rise">
+                <div class="log-meta">
+                    <span class="log-date">July 2026</span>
+                    <span class="log-no">01</span>
+                </div>
+                <div class="log-body">
+                    <h3 class="log-title">From the metal up</h3>
+                    <p>The engine began as an experiment in writing a renderer by hand, close
+                        to the machine, to understand every step of how a triangle becomes a
+                        picture.</p>
+                    <p>It has since grown into something a game can be built on: materials that
+                        respond to light properly, shadows that move, worlds authored in Blender
+                        and read straight into the engine.</p>
+                </div>
+            </article>
+
         </div>
     </section>
 
