@@ -60,6 +60,50 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    /* --- Lightbox ---------------------------------------------------------- */
+    const shots = document.querySelectorAll('.log-shots img, .log-media img');
+
+    if (shots.length) {
+        const box = document.createElement('div');
+        box.className = 'lightbox';
+        box.setAttribute('role', 'dialog');
+        box.setAttribute('aria-modal', 'true');
+        box.setAttribute('aria-label', 'Image viewer');
+        box.innerHTML = '<button class="lightbox-close" type="button" aria-label="Close">Close</button><img alt="">';
+        document.body.appendChild(box);
+
+        const full = box.querySelector('img');
+        let opener = null;
+
+        const open = (src, alt) => {
+            full.src = src;
+            full.alt = alt || '';
+            box.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            box.querySelector('.lightbox-close').focus();
+        };
+
+        const close = () => {
+            box.classList.remove('open');
+            document.body.style.overflow = '';
+            if (opener) opener.focus();
+            // Drop the source once it has faded, so a big render isn't held open.
+            setTimeout(() => { if (!box.classList.contains('open')) full.src = ''; }, 400);
+        };
+
+        shots.forEach(img => {
+            img.addEventListener('click', () => {
+                opener = img;
+                open(img.currentSrc || img.src, img.alt);
+            });
+        });
+
+        box.addEventListener('click', close);
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && box.classList.contains('open')) close();
+        });
+    }
+
     /* --- Mark the current page -------------------------------------------- */
     const here = location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('.menu a').forEach(a => {
