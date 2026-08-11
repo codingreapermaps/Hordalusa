@@ -79,11 +79,26 @@
          Entradas por ordem inversa: a mais recente em cima.
 
          PARA ACRESCENTAR UMA ENTRADA NOVA, copiar um bloco <article class="log">
-         inteiro e colá-lo LOGO A SEGUIR à abertura de <div class="log-list">.
-         Nada mais precisa de mudar -- a numeração e as linhas são automáticas.
+         inteiro e colá-lo LOGO A SEGUIR à abertura de <div class="log-list">,
+         e depois mudar tres coisas:
 
-         A imagem é opcional: sem <div class="log-media">, a entrada ocupa a
-         largura toda do texto.
+           1. data-track  ->  "engine" (tecnologia) ou "game" (Signal Lost).
+                              E' o que o filtro em cima usa. O texto dentro de
+                              <span class="log-track"> deve dizer o mesmo.
+           2. log-version ->  a versao nova (v0.6, v0.7, ...).
+           3. log-no      ->  o numero da entrada, com dois digitos.
+
+         IMAGENS (opcional). Um bloco <div class="log-shots"> aceita de 1 a 4
+         prints; o atributo data-shots tem de bater certo com quantos <img> la
+         estao dentro, porque e' isso que define as colunas da grelha:
+
+           data-shots="1"  ->  uma imagem, largura toda
+           data-shots="2"  ->  duas lado a lado
+           data-shots="3"  ->  tres em linha
+           data-shots="4"  ->  quatro, duas por duas
+
+         Os ficheiros vao para a pasta engine/. A legenda <figcaption> tambem
+         e' opcional. Sem <div class="log-shots">, a entrada e' so' texto.
          ====================================================================== -->
     <section class="devlog" id="devlog">
         <div class="devlog-head">
@@ -91,10 +106,210 @@
             <h2 class="title-md">Notes from the build</h2>
         </div>
 
+        <div class="log-filter">
+            <button type="button" data-filter="all" aria-pressed="true">Everything</button>
+            <button type="button" data-filter="engine" aria-pressed="false">Engine</button>
+            <button type="button" data-filter="game" aria-pressed="false">Signal Lost</button>
+        </div>
+
         <div class="log-list">
 
-            <article class="log rise">
+            <article class="log rise" data-track="game">
                 <div class="log-meta">
+                    <span class="log-version">v0.9</span>
+                    <span class="log-track">Signal Lost</span>
+                    <span class="log-date">August 2026</span>
+                    <span class="log-no">09</span>
+                </div>
+                <div class="log-body">
+                    <h3 class="log-title">The things people leave behind</h3>
+                    <p>A room is furnished one object at a time, and each one has to survive
+                        being looked at closely &mdash; because sooner or later a torch beam
+                        will rest on it and the player will decide, in that second, whether this
+                        house was ever lived in.</p>
+                    <p>So they are built to be read: brass handles worn to a shine, a coat stand
+                        that reads as a figure at the edge of your vision, a photograph gone
+                        brown at the corners of somebody nobody is left to name. None of it is
+                        set dressing. It is the only evidence the house gets to give.</p>
+                    <p>Every one of these is already standing in the hall.</p>
+                </div>
+                <div class="log-shots" data-shots="5">
+                    <figure>
+                        <img src="engine/signal-lost-prop-portrait.png"
+                             alt="A framed photograph of a moustached man, stained with age"
+                             loading="lazy" width="588" height="700">
+                    </figure>
+                    <figure>
+                        <img src="engine/signal-lost-prop-dresser.png"
+                             alt="A dark wooden dresser with brass handles"
+                             loading="lazy" width="1174" height="904">
+                    </figure>
+                    <figure>
+                        <img src="engine/signal-lost-prop-lamp.png"
+                             alt="A table lamp with a ceramic base and pale shade"
+                             loading="lazy" width="726" height="745">
+                    </figure>
+                    <figure>
+                        <img src="engine/signal-lost-prop-coatstand.png"
+                             alt="A tall dark coat stand"
+                             loading="lazy" width="603" height="1013">
+                    </figure>
+                    <figure>
+                        <img src="engine/signal-lost-prop-plant.png"
+                             alt="A potted plant in a terracotta pot"
+                             loading="lazy" width="727" height="739">
+                    </figure>
+                </div>
+            </article>
+
+            <!-- ENTRADA POR PUBLICAR: v0.8, a personagem.
+
+                 Está escrita e pronta; basta tirar este comentário à volta dela
+                 quando o modelo estiver acabado e houver um render dela no
+                 escuro, com a lanterna. Guardar a imagem como
+                 engine/signal-lost-figure-01.png.
+
+                 Por acabar no modelo: as pernas ainda mostram facetas, as mãos
+                 não têm dedos definidos, e a pose é a de modelação. Publicá-la
+                 assim mostra a costura, e gasta a única imagem do jogo que só
+                 funciona uma vez.
+
+            <article class="log rise" data-track="game">
+                <div class="log-meta">
+                    <span class="log-version">v0.8</span>
+                    <span class="log-track">Signal Lost</span>
+                    <span class="log-date">August 2026</span>
+                    <span class="log-no">08</span>
+                </div>
+                <div class="log-body">
+                    <h3 class="log-title">Something shaped like a girl</h3>
+                    <p>A monster you can see clearly is a monster you can measure, and anything
+                        you can measure stops being frightening shortly afterwards.</p>
+                    <p>So this one is built to be half-seen. The silhouette does the work &mdash;
+                        the hair over the face, the pale dress, the limbs a little longer than
+                        they ought to be &mdash; because that is all you will get of her at the
+                        edge of a torch beam, and all you should get.</p>
+                    <p>She is not finished. We are in no hurry with her.</p>
+                </div>
+                <div class="log-shots" data-shots="1">
+                    <figure>
+                        <img src="engine/signal-lost-figure-01.png"
+                             alt="A pale figure in a dress, hair covering her face"
+                             loading="lazy">
+                    </figure>
+                </div>
+            </article>
+            -->
+
+            <article class="log rise" data-track="game">
+                <div class="log-meta">
+                    <span class="log-version">v0.7</span>
+                    <span class="log-track">Signal Lost</span>
+                    <span class="log-date">August 2026</span>
+                    <span class="log-no">07</span>
+                </div>
+                <div class="log-body">
+                    <h3 class="log-title">The thing in your hand</h3>
+                    <p>You play a police officer, and for most of the game the radio is the only
+                        company you have. So it is the object we are spending the most time on.</p>
+                    <p>It is modelled to be held rather than looked at: the arm and hand are one
+                        piece with it, the grip is a real grip, and the screen is where your eye
+                        goes when you need to know something. It has to feel solid and ordinary
+                        &mdash; a tool you have carried a thousand nights &mdash; because the
+                        moment it stops working has to land as a loss.</p>
+                    <p>Everything the game does to you, it does through this.</p>
+                </div>
+                <div class="log-shots" data-shots="2">
+                    <figure>
+                        <img src="engine/signal-lost-radio-01.png"
+                             alt="The player's arm holding a handheld police radio, seen from behind"
+                             loading="lazy" width="920" height="712">
+                    </figure>
+                    <figure>
+                        <img src="engine/signal-lost-radio-02.png"
+                             alt="The radio's front face, keypad and lit screen"
+                             loading="lazy" width="970" height="771">
+                    </figure>
+                </div>
+            </article>
+
+            <article class="log rise" data-track="game">
+                <div class="log-meta">
+                    <span class="log-version">v0.6</span>
+                    <span class="log-track">Signal Lost</span>
+                    <span class="log-date">August 2026</span>
+                    <span class="log-no">06</span>
+                </div>
+                <div class="log-body">
+                    <h3 class="log-title">The hall</h3>
+                    <p>The house is being built one room at a time, and the first of them is the
+                        one you walk into.</p>
+                    <p>A hall is a small room doing a lot of work. It has to say who lived here
+                        before anyone says a word about them &mdash; a coat stand, a rug worn
+                        down the middle, a photograph on a dresser, a lamp somebody left on. It
+                        also has to teach you the rules: this is how far the light reaches, this
+                        is how much of the dark you are expected to walk into.</p>
+                    <p>Everything past the lamp falls away to nothing. That is not a limitation
+                        we are working around. That is the game.</p>
+                </div>
+                <div class="log-shots" data-shots="1">
+                    <figure>
+                        <img src="engine/signal-lost-hall-01.png"
+                             alt="The hall of the house, lit by a single lamp on a dresser"
+                             loading="lazy" width="1451" height="969">
+                        <figcaption>The hall &mdash; work in progress.</figcaption>
+                    </figure>
+                </div>
+            </article>
+
+            <article class="log rise" data-track="engine">
+                <div class="log-meta">
+                    <span class="log-version">v0.5</span>
+                    <span class="log-track">Engine</span>
+                    <span class="log-date">August 2026</span>
+                    <span class="log-no">05</span>
+                </div>
+                <div class="log-body">
+                    <h3 class="log-title">Hands, from a webcam</h3>
+                    <p>Animating a hand by hand is slow work, and it shows &mdash; fingers that
+                        move on a schedule rather than because something startled them.</p>
+                    <p>So we built a companion tool that watches a real hand through an ordinary
+                        webcam and writes what it sees onto a skeleton. The camera gives
+                        positions; a skeleton needs rotations, and turning one into the other is
+                        most of the work. What comes out the other end is an animation file the
+                        engine reads like any other.</p>
+                    <p>It means a gesture can be performed rather than authored. For a game where
+                        the player's hands are most of what they ever see, that matters.</p>
+                </div>
+            </article>
+
+            <article class="log rise" data-track="engine">
+                <div class="log-meta">
+                    <span class="log-version">v0.4</span>
+                    <span class="log-track">Engine</span>
+                    <span class="log-date">August 2026</span>
+                    <span class="log-no">04</span>
+                </div>
+                <div class="log-body">
+                    <h3 class="log-title">A world that stays where you put it</h3>
+                    <p>Until now, lighting a street meant lighting it again tomorrow. The engine
+                        could be adjusted while it ran &mdash; drag a lamp, warm it up, dim it
+                        &mdash; but closing the window threw the evening away.</p>
+                    <p>The scene now lives in a file of its own, beside the geometry rather than
+                        inside it. Artists keep working in Blender and re-exporting whenever a
+                        wall moves; the lighting, the placements and the mood we set in the
+                        engine survive it untouched, because the two files have different
+                        owners and neither overwrites the other.</p>
+                    <p>Click an object and it selects. Move it and it stays moved. It is the
+                        difference between a renderer and something you can actually build a
+                        game in.</p>
+                </div>
+            </article>
+
+            <article class="log rise" data-track="engine">
+                <div class="log-meta">
+                    <span class="log-version">v0.3</span>
+                    <span class="log-track">Engine</span>
                     <span class="log-date">August 2026</span>
                     <span class="log-no">03</span>
                 </div>
@@ -117,8 +332,10 @@
                 </div>
             </article>
 
-            <article class="log rise">
+            <article class="log rise" data-track="engine">
                 <div class="log-meta">
+                    <span class="log-version">v0.2</span>
+                    <span class="log-track">Engine</span>
                     <span class="log-date">August 2026</span>
                     <span class="log-no">02</span>
                 </div>
@@ -133,8 +350,10 @@
                 </div>
             </article>
 
-            <article class="log rise">
+            <article class="log rise" data-track="engine">
                 <div class="log-meta">
+                    <span class="log-version">v0.1</span>
+                    <span class="log-track">Engine</span>
                     <span class="log-date">July 2026</span>
                     <span class="log-no">01</span>
                 </div>

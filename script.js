@@ -38,6 +38,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    /* --- Devlog filter ----------------------------------------------------- */
+    const filter = document.querySelector('.log-filter');
+
+    if (filter) {
+        const logs = document.querySelectorAll('.log[data-track]');
+
+        filter.addEventListener('click', (e) => {
+            const hit = e.target.closest('button[data-filter]');
+            if (!hit) return;
+
+            const want = hit.dataset.filter;
+
+            filter.querySelectorAll('button').forEach(b => {
+                b.setAttribute('aria-pressed', b === hit ? 'true' : 'false');
+            });
+
+            logs.forEach(log => {
+                log.hidden = want !== 'all' && log.dataset.track !== want;
+            });
+        });
+    }
+
     /* --- Mark the current page -------------------------------------------- */
     const here = location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('.menu a').forEach(a => {

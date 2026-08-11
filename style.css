@@ -783,11 +783,17 @@ body.loading {
     background: var(--white);
 }
 
+/* Em ecrãs pequenos a meta é uma linha só: versão, etiqueta e data juntas à
+   esquerda, e o número empurrado para a direita pela margem automática. */
 .log-meta {
     display: flex;
     align-items: baseline;
-    gap: 1rem;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.75rem;
+}
+
+.log-meta .log-no {
+    margin-left: auto;
 }
 
 .log-date {
@@ -836,7 +842,7 @@ body.loading {
    coluna da esquerda, junto à data. */
 @media (min-width: 900px) {
     .log {
-        grid-template-columns: 9rem 1fr;
+        grid-template-columns: 11rem 1fr;
         column-gap: clamp(2rem, 4vw, 3.5rem);
         align-items: start;
     }
@@ -848,12 +854,155 @@ body.loading {
         grid-row: 1;
     }
 
+    /* Em coluna já não há linha para preencher -- o número volta a alinhar
+       à esquerda com a versão e a data. */
+    .log-meta .log-no {
+        margin-left: 0;
+        margin-top: 0.4rem;
+    }
+
     .log-body,
     .log-media {
         grid-column: 2;
     }
 
     .log-media {
+        margin-top: 1.75rem;
+    }
+}
+
+/* -----------------------------------------------------------------------------
+   Devlog — versão, etiqueta e filtro
+
+   Cada entrada declara a que linha pertence (engine ou jogo) através de
+   data-track. O filtro no topo esconde as outras pondo hidden nas entradas,
+   e a régua continua contínua porque é da lista, não das entradas.
+   -------------------------------------------------------------------------- */
+.log-version {
+    font-family: var(--display);
+    font-size: 1.05rem;
+    letter-spacing: 0.06em;
+    color: var(--white);
+}
+
+/* A etiqueta da linha. Discreta -- diz de que lado é a entrada sem gritar. */
+.log-track {
+    font-family: var(--body);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--grey);
+    border: 1px solid var(--line);
+    padding: 0.28rem 0.55rem;
+    white-space: nowrap;
+    align-self: flex-start;
+}
+
+.log[data-track="game"] .log-track {
+    color: rgba(255, 255, 255, 0.82);
+    border-color: rgba(255, 255, 255, 0.28);
+}
+
+.log[hidden] {
+    display: none;
+}
+
+/* Os botões do filtro. */
+.log-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    max-width: 68rem;
+    margin: 0 auto clamp(2rem, 4vw, 3rem);
+}
+
+.log-filter button {
+    font-family: var(--body);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--grey);
+    background: none;
+    border: 1px solid var(--line);
+    padding: 0.55rem 1.1rem;
+    cursor: pointer;
+    transition: color 0.4s var(--ease), border-color 0.4s var(--ease);
+}
+
+.log-filter button:hover {
+    color: var(--white);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.log-filter button[aria-pressed="true"] {
+    color: var(--black);
+    background: var(--white);
+    border-color: var(--white);
+}
+
+/* Galeria da entrada. Uma imagem ocupa a largura toda; duas ou mais dividem-se
+   em colunas iguais e mantêm a mesma proporção, para a grelha não ficar
+   serrilhada quando os prints têm tamanhos diferentes. */
+.log-shots {
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: 1fr;
+}
+
+.log-shots img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid var(--line);
+}
+
+.log-shots figure {
+    margin: 0;
+}
+
+.log-shots figcaption {
+    font-family: var(--body);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--grey);
+    margin-top: 0.55rem;
+}
+
+@media (min-width: 700px) {
+    .log-shots[data-shots="2"],
+    .log-shots[data-shots="4"] {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .log-shots[data-shots="3"],
+    .log-shots[data-shots="5"],
+    .log-shots[data-shots="6"] {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .log-shots[data-shots="2"] img,
+    .log-shots[data-shots="3"] img,
+    .log-shots[data-shots="4"] img {
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+    }
+
+    /* Grelhas de cinco ou seis servem para peças isoladas, que são altas e não
+       sobrevivem a um corte panorâmico. Ficam de pé, com a mesma altura entre
+       si e o objeto inteiro dentro do quadro. */
+    .log-shots[data-shots="5"] img,
+    .log-shots[data-shots="6"] img {
+        aspect-ratio: 3 / 4;
+        object-fit: contain;
+        background: rgba(255, 255, 255, 0.02);
+    }
+}
+
+@media (min-width: 900px) {
+    .log-shots {
+        grid-column: 2;
         margin-top: 1.75rem;
     }
 }
