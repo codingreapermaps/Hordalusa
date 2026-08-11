@@ -13,6 +13,18 @@
     const loader = document.getElementById('loader');
     if (!loader) return;
 
+    /* The herd is a first-impression, not a toll gate. Once it has been seen
+       in this session, every page after it opens straight onto the work --
+       which is what someone reading three devlog entries in a row wants. */
+    let seen = false;
+    try { seen = sessionStorage.getItem('hl-seen') === '1'; } catch (e) { /* private mode */ }
+
+    if (seen) {
+        loader.remove();
+        document.body.classList.remove('loading');
+        return;
+    }
+
     /* -------------------------------------------------------------------------
        One horse, facing right, viewBox 0 0 140 100.
 
@@ -101,11 +113,14 @@
   </g>
 </svg>`;
 
-    /* --- Three ranks. Further back: smaller, dimmer, slower. --------------- */
+    /* --- Two ranks. -------------------------------------------------------
+       Was three ranks of ten horses. At under a second nobody reads ten
+       animals -- it just registers as busy, and busy is what wears out on
+       the fifth visit. Four horses still give depth and gait; the name
+       carries the rest. */
     const ranks = [
-        { cls: 'rank-back',  count: 4 },
-        { cls: 'rank-mid',   count: 3 },
-        { cls: 'rank-front', count: 3 }
+        { cls: 'rank-back',  count: 2 },
+        { cls: 'rank-front', count: 2 }
     ];
 
     const herd = document.createElement('div');
@@ -121,9 +136,11 @@
 
             // Keep the herd BUNCHED rather than evenly spaced. The starting
             // points sit close together, so they cross the strip as one
-            // group — which is how a herd actually moves.
-            const spread = 0.17;   // how far apart, as a fraction of the loop
-            const along = 0.30 + (i * spread / rank.count) + (r * 0.05);
+            // group — which is how a herd actually moves. With only two per
+            // rank the gap is taken straight, not divided by the count, or
+            // they end up overlapping.
+            const spread = 0.13;   // how far apart, as a fraction of the loop
+            const along = 0.30 + (i * spread) + (r * 0.06);
             runner.style.setProperty('--start', `${-along.toFixed(3)}`);
 
             // Desynchronise the gait so they don't move as one animal.
@@ -137,9 +154,20 @@
 
     loader.querySelector('.loader-stage').appendChild(herd);
 
-    /* --- Dismiss ---------------------------------------------------------- */
-    // Long enough to be seen, short enough not to be in the way.
-    const MIN_MS = 1600;
+    /* --- Dismiss -----------------------------------------------------------
+       Deliberately NOT waiting on window.load. That event waits for every
+       image on the page, and the renders here run to a couple of megabytes --
+       which turned the loader into a download progress bar.
+
+       The page is readable as soon as the document is parsed; the images
+       arrive behind it, in their own time, into space already reserved by
+       their width/height attributes. So the curtain lifts on DOMContentLoaded
+       and the hold is short and fixed.
+
+       Anyone who has already seen it this session skips it entirely.
+       ---------------------------------------------------------------------- */
+    const SEEN = 'hl-seen';
+    const MIN_MS = 900;
     const started = performance.now();
     let done = false;
 
@@ -150,13 +178,14 @@
         setTimeout(() => {
             loader.classList.add('done');
             document.body.classList.remove('loading');
+            try { sessionStorage.setItem(SEEN, '1'); } catch (e) { /* private mode */ }
             setTimeout(() => loader.remove(), 700);
         }, wait);
     };
 
-    if (document.readyState === 'complete') dismiss();
-    else window.addEventListener('load', dismiss);
+    if (document.readyState !== 'loading') dismiss();
+    else document.addEventListener('DOMContentLoaded', dismiss);
 
-    // Never trap anyone behind the loader if something fails to load.
-    setTimeout(dismiss, 5000);
+    // Never trap anyone behind the loader if a script above us throws.
+    setTimeout(dismiss, 2500);
 })();

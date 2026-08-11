@@ -836,7 +836,9 @@ body.loading {
     inset: 0;
     background: var(--white);
     transform: translateX(-100%);
-    animation: sweep 1.6s var(--ease) infinite;
+    /* Matched to how long the loader actually holds. A sweep slower than the
+       curtain reads as a bar that never finished. */
+    animation: sweep 0.9s var(--ease) infinite;
 }
 
 @keyframes sweep {
