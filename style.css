@@ -265,7 +265,7 @@ p + p {
 /* Principles as a plain horizontal run, no boxes */
 .tenets {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
     gap: clamp(2rem, 4vw, 4rem);
     margin-top: clamp(4rem, 9vh, 7rem);
     padding-top: 2.5rem;
@@ -567,7 +567,7 @@ p + p {
 /* Full-bleed image strip */
 .strip {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
     gap: 2px;
     /* hairline gaps, so it reads as one surface */
 }
@@ -593,7 +593,7 @@ p + p {
 /* Two-column prose */
 .duo {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
     gap: clamp(2rem, 5vw, 5rem);
 }
 
@@ -1336,4 +1336,725 @@ body.loading {
     .body-lg {
         max-width: none;
     }
+}
+
+
+/* =============================================================================
+   AZULEJO LAYER
+   -----------------------------------------------------------------------------
+   Porto, not a copy of anyone else's look. Cobalt tile blue, cream and a little
+   terracotta (the roofs), on black. Tile pattern, the arch of the Dom Luis
+   bridge and the river's waves are all drawn in SVG, inline, nothing to fetch.
+   Sits last: delete from here down to return to the quiet look.
+   ============================================================================= */
+:root {
+    --azul: #2a6592;
+    --azul-deep: #173b57;
+    --azul-light: #8ab8d8;
+    --cream: #e6d6be;
+    --ink: #0b1018;
+
+    --tile: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%232a6592'/%3E%3Cg fill='none' stroke='%23e6d6be' stroke-width='2'%3E%3Ccircle cx='40' cy='22' r='14'/%3E%3Ccircle cx='58' cy='40' r='14'/%3E%3Ccircle cx='40' cy='58' r='14'/%3E%3Ccircle cx='22' cy='40' r='14'/%3E%3Ccircle cx='0' cy='0' r='12'/%3E%3Ccircle cx='80' cy='0' r='12'/%3E%3Ccircle cx='0' cy='80' r='12'/%3E%3Ccircle cx='80' cy='80' r='12'/%3E%3C/g%3E%3Ccircle cx='40' cy='40' r='5' fill='%23e6d6be'/%3E%3C/svg%3E");
+    --bridge: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='72' viewBox='0 0 640 72'%3E%3Cg fill='none' stroke='%23e6d6be' stroke-width='2'%3E%3Cpath d='M0 6 H640'/%3E%3Cpath d='M70 70 Q320 -56 570 70'/%3E%3Cpath d='M103.3 6 V54.3' stroke-width='1'/%3E%3Cpath d='M136.7 6 V40.9' stroke-width='1'/%3E%3Cpath d='M170.0 6 V29.7' stroke-width='1'/%3E%3Cpath d='M203.3 6 V20.7' stroke-width='1'/%3E%3Cpath d='M236.7 6 V14.0' stroke-width='1'/%3E%3Cpath d='M270.0 6 V9.5' stroke-width='1'/%3E%3Cpath d='M303.3 6 V7.3' stroke-width='1'/%3E%3Cpath d='M336.7 6 V7.3' stroke-width='1'/%3E%3Cpath d='M370.0 6 V9.5' stroke-width='1'/%3E%3Cpath d='M403.3 6 V14.0' stroke-width='1'/%3E%3Cpath d='M436.7 6 V20.7' stroke-width='1'/%3E%3Cpath d='M470.0 6 V29.7' stroke-width='1'/%3E%3Cpath d='M503.3 6 V40.9' stroke-width='1'/%3E%3Cpath d='M536.7 6 V54.3' stroke-width='1'/%3E%3Cpath d='M70 70 V72M570 70 V72'/%3E%3C/g%3E%3C/svg%3E");
+    --wave: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='28' viewBox='0 0 96 28'%3E%3Cpath d='M0 14 Q24 -2 48 14 T96 14 V28 H0Z' fill='%23193d5b'/%3E%3Cpath d='M0 14 Q24 -2 48 14 T96 14' fill='none' stroke='%238ab8d8' stroke-width='2'/%3E%3C/svg%3E");
+}
+
+::selection {
+    background: var(--azul);
+    color: var(--cream);
+}
+
+/* Film grain, very light */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+.progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    z-index: 120;
+    background: var(--azul-light);
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    pointer-events: none;
+}
+
+/* ---- Masthead ------------------------------------------------------------ */
+.masthead {
+    mix-blend-mode: normal;
+    padding-top: 1.1rem;
+    padding-bottom: 1.1rem;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0));
+    transition: background 0.4s var(--ease), padding 0.4s var(--ease);
+}
+
+.masthead.scrolled {
+    background: rgba(0, 0, 0, 0.92);
+    border-bottom: 1px solid var(--line);
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+}
+
+.mark {
+    font-size: 1.75rem;
+    letter-spacing: 0.14em;
+}
+
+/* A tile set on its corner */
+.mark::before {
+    content: '';
+    display: inline-block;
+    width: 0.5em;
+    height: 0.5em;
+    margin-right: 0.7em;
+    background: var(--azul);
+    border: 2px solid var(--cream);
+    outline: 2px solid var(--azul);
+    outline-offset: -5px;
+    transform: rotate(45deg) translateY(-0.04em);
+}
+
+.menu a {
+    position: relative;
+    opacity: 0.8;
+    font-weight: 600;
+}
+
+.menu a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.45rem;
+    height: 2px;
+    background: var(--azul-light);
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    transition: transform 0.35s var(--ease);
+}
+
+.menu a:hover::after,
+.menu a[aria-current="page"]::after {
+    transform: scaleX(1);
+}
+
+.menu a[href="porto.html"] {
+    color: var(--azul-light);
+    opacity: 1;
+}
+
+/* ---- Labels -------------------------------------------------------------- */
+.meta {
+    color: var(--azul-light);
+    font-weight: 600;
+}
+
+.statement .meta::before,
+.devlog-head .meta::before {
+    content: '';
+    display: inline-block;
+    width: 0.6rem;
+    height: 0.6rem;
+    margin-right: 0.8rem;
+    vertical-align: 0.08em;
+    background: var(--azul);
+    border: 1px solid var(--azul-light);
+    transform: rotate(45deg);
+}
+
+.stage .meta,
+.band-content .meta,
+.opening .meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.45rem 1rem 0.4rem;
+    background: var(--azul);
+    color: var(--cream);
+    border: 1px solid rgba(230, 214, 190, 0.45);
+}
+
+.stage .meta::before,
+.band-content .meta::before,
+.opening .meta::before {
+    content: '';
+    width: 0.45rem;
+    height: 0.45rem;
+    background: var(--cream);
+    transform: rotate(45deg);
+}
+
+/* ---- Hero: a giant word standing on the edge of the picture ------------- */
+.stage-media img {
+    filter: brightness(0.8) contrast(1.1) saturate(1.1);
+}
+
+.stage-media::after {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.92) 0%, transparent 55%),
+        linear-gradient(to right, rgba(0, 0, 0, 0.65) 0%, transparent 62%);
+}
+
+.stage::after {
+    content: attr(data-word);
+    position: absolute;
+    right: calc(var(--gutter) * 0.45);
+    top: 5.5rem;
+    bottom: 1.5rem;
+    writing-mode: vertical-rl;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(5rem, 27vh, 15rem);
+    line-height: 0.82;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(230, 214, 190, 0.6);
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.stage .title-xl {
+    text-shadow: 0 0.04em 0 rgba(0, 0, 0, 0.35);
+}
+
+.stage .body-lg {
+    border-left: 3px solid var(--azul-light);
+    padding-left: 1.1rem;
+    color: #fff;
+}
+
+/* ---- Ticker: a band of tile ---------------------------------------------- */
+.ticker {
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    background: var(--azul);
+    color: var(--cream);
+    padding: 16px 0;
+    margin: 0 0 clamp(2rem, 4vw, 3.5rem);
+}
+
+.ticker::before,
+.ticker::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 14px;
+    background: var(--tile);
+    background-size: 28px 28px;
+    border-color: rgba(230, 214, 190, 0.5);
+    border-style: solid;
+    border-width: 0;
+}
+
+.ticker::before {
+    top: 0;
+    border-bottom-width: 1px;
+}
+
+.ticker::after {
+    bottom: 0;
+    border-top-width: 1px;
+}
+
+.ticker-track {
+    display: flex;
+    width: max-content;
+    animation: ticker 42s linear infinite;
+}
+
+.ticker span {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    line-height: 1;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.5rem 0;
+    white-space: nowrap;
+}
+
+.ticker span::after {
+    content: '';
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    margin: 0 1.6rem;
+    vertical-align: 0.15em;
+    background: var(--cream);
+    transform: rotate(45deg);
+}
+
+@keyframes ticker {
+    to { transform: translateX(-50%); }
+}
+
+/* ---- Statement: a bridge over the headline ------------------------------- */
+.statement-inner::before {
+    content: '';
+    display: block;
+    height: 72px;
+    margin-bottom: clamp(2rem, 5vw, 3.5rem);
+    background: var(--bridge) 0 100% / auto 72px no-repeat;
+    opacity: 0.55;
+}
+
+.statement-lead {
+    font-family: var(--display);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: clamp(2.4rem, 6.2vw, 5.4rem);
+    line-height: 0.92;
+    letter-spacing: 0.005em;
+    max-width: 18ch;
+}
+
+.statement-lead .hl {
+    color: var(--azul-light);
+}
+
+/* ---- Tenets: four tiles --------------------------------------------------- */
+.tenets {
+    counter-reset: tenet;
+    gap: 8px;
+    padding-top: 0;
+    border-top: 0;
+}
+
+.tenet {
+    counter-increment: tenet;
+    position: relative;
+    padding: 2.4rem 1.6rem 2rem;
+    background: var(--ink);
+    border: 1px solid rgba(138, 184, 216, 0.35);
+    overflow: hidden;
+    isolation: isolate;
+    transition: transform 0.35s var(--ease), border-color 0.35s var(--ease);
+}
+
+/* The tile appears behind the card on hover */
+.tenet::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--tile), var(--azul);
+    background-size: 56px 56px, auto;
+    opacity: 0;
+    transition: opacity 0.4s var(--ease);
+}
+
+.tenet::before {
+    content: counter(tenet, decimal-leading-zero);
+    display: block;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 4.5rem;
+    line-height: 0.8;
+    color: var(--azul-light);
+    margin-bottom: 1.4rem;
+    transition: color 0.35s var(--ease);
+}
+
+.tenet h3 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.7rem;
+    line-height: 1;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.tenet p {
+    transition: color 0.35s var(--ease);
+}
+
+.tenet:hover {
+    transform: translateY(-4px);
+    border-color: var(--cream);
+}
+
+.tenet:hover::after {
+    opacity: 1;
+}
+
+.tenet:hover::before,
+.tenet:hover p {
+    color: var(--cream);
+}
+
+/* ---- Bands --------------------------------------------------------------- */
+.band-media img {
+    filter: brightness(0.72) saturate(1.05) contrast(1.08);
+}
+
+.band:hover .band-media img {
+    filter: brightness(0.92) saturate(1.2) contrast(1.08);
+}
+
+.band {
+    border-top: 0;
+}
+
+.band::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    background: var(--tile), var(--azul);
+    background-size: 24px 24px, auto;
+    z-index: 1;
+    transform: scaleY(0.25);
+    transform-origin: 0 100%;
+    transition: transform 0.6s var(--ease);
+}
+
+.band:hover::before,
+.band-plain::before {
+    transform: scaleY(1);
+}
+
+.band h2 {
+    text-shadow: 0 0.05em 0 rgba(0, 0, 0, 0.4);
+}
+
+/* ---- Buttons ------------------------------------------------------------- */
+.go {
+    padding: 0.85rem 1.5rem 0.8rem;
+    border: 1px solid var(--cream);
+    background: var(--cream);
+    color: var(--ink);
+    font-weight: 700;
+    transition: background 0.3s var(--ease), color 0.3s var(--ease), gap 0.3s var(--ease);
+}
+
+.band:hover .go,
+.go:hover {
+    background: var(--azul);
+    border-color: var(--cream);
+    color: var(--cream);
+}
+
+/* ---- Inner pages, strips ------------------------------------------------- */
+.opening .title-lg,
+.devlog-head .title-md {
+    line-height: 0.85;
+}
+
+/* Pictures set in arches, like the windows and the bridge */
+.strip {
+    gap: 14px;
+    padding: 0 14px;
+}
+
+.strip img {
+    border-radius: 50% 50% 0 0 / 38% 38% 0 0;
+    filter: saturate(1.05) contrast(1.05);
+    transition: filter 0.5s var(--ease), transform 0.5s var(--ease);
+}
+
+.strip img:hover {
+    filter: saturate(1.2) brightness(1.08);
+    transform: translateY(-4px);
+}
+
+.caption {
+    color: var(--grey);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-left: 3px solid var(--azul);
+    margin: 1rem var(--gutter) 3rem;
+    padding: 0.1rem 0 0.1rem 0.8rem;
+}
+
+/* ---- Footer: the river, then tile ---------------------------------------- */
+.foot {
+    position: relative;
+    margin-top: 28px;
+    border-top: 0;
+    background:
+        linear-gradient(rgba(23, 59, 87, 0.88), rgba(23, 59, 87, 0.88)),
+        var(--tile);
+    background-size: auto, 72px 72px;
+    background-color: var(--azul-deep);
+}
+
+.foot::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -27px;
+    height: 28px;
+    background: var(--wave) 0 100% / 96px 28px repeat-x;
+}
+
+.foot .meta {
+    color: #c9dceb;
+}
+
+.foot-cta {
+    color: var(--cream);
+    border-bottom: 4px solid var(--cream);
+}
+
+.foot-cta:hover {
+    color: var(--ink);
+    border-bottom-color: var(--ink);
+}
+
+.foot-rows {
+    border-top-color: rgba(230, 214, 190, 0.3);
+}
+
+.foot-col a:hover {
+    color: var(--cream);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.log-filter button[aria-pressed="true"] {
+    background: var(--azul);
+    color: var(--cream);
+}
+
+:focus-visible {
+    outline: 2px solid var(--azul-light);
+    outline-offset: 4px;
+}
+
+@media (max-width: 800px) {
+    .stage::after {
+        font-size: clamp(4rem, 20vh, 9rem);
+        right: 0.5rem;
+        opacity: 0.8;
+    }
+
+    .menu a::after {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ticker-track {
+        animation: none;
+    }
+}
+
+.foot-base,
+.foot-base span {
+    color: #c9dceb;
+}
+
+/* Mobile: a backdrop-filter on the bar made it the containing block of the
+   fixed full-screen menu, so the menu collapsed to the bar's height and its
+   links hung over the logo. No filter here, so the menu fills the screen. */
+@media (max-width: 800px) {
+    .masthead,
+    .masthead.scrolled {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: rgba(0, 0, 0, 0.88);
+    }
+
+    .menu {
+        height: 100svh;
+        width: 100%;
+    }
+}
+
+/* Mobile: the giant side word sits above the copy instead of behind it */
+@media (max-width: 800px) {
+    .stage::after {
+        font-size: 3.4rem;
+        top: 5.5rem;
+        bottom: auto;
+        max-height: 38%;
+        right: 1rem;
+        opacity: 0.7;
+    }
+}
+
+
+/* ---- Logo: the real mark and wordmark ------------------------------------ */
+.mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0;
+    line-height: 0;
+    letter-spacing: 0;
+}
+
+/* The words stay in the markup for screen readers and search */
+.mark span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.mark::before {
+    content: '';
+    flex: none;
+    width: 2.7rem;
+    height: 2.7rem;
+    margin: 0;
+    border: 0;
+    outline: 0;
+    transform: none;
+    background: url("brand/logo-mark.png") center / contain no-repeat;
+}
+
+.mark::after {
+    content: '';
+    flex: none;
+    height: 1.05rem;
+    width: calc(1.05rem * 599 / 64);
+    background: url("brand/logo-word.png") center / contain no-repeat;
+}
+
+/* Very narrow phones: a smaller lockup so it clears the Menu button */
+@media (max-width: 400px) {
+    .mark {
+        gap: 0.55rem;
+    }
+
+    .mark::before {
+        width: 2.2rem;
+        height: 2.2rem;
+    }
+
+    .mark::after {
+        height: 0.8rem;
+        width: calc(0.8rem * 599 / 64);
+    }
+}
+
+
+/* =============================================================================
+   PALETTE & SPACING PASS
+   -----------------------------------------------------------------------------
+   Ground matches the logo's night-navy instead of pure black. Sections are
+   tighter, and wide screens use both columns so the right half isn't empty.
+   ============================================================================= */
+:root {
+    --black: #04060b;
+    --near-black: #0a0e16;
+}
+
+body {
+    background: var(--black);
+}
+
+/* Section rhythm: was 6-12rem top and bottom, which left 300px+ of black */
+.statement {
+    padding: clamp(3.5rem, 8vh, 6rem) var(--gutter);
+}
+
+.ticker {
+    margin-bottom: 0;
+}
+
+.statement-inner::before {
+    height: 56px;
+    background-size: auto 56px;
+    margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.statement .meta {
+    margin-bottom: 1.5rem;
+}
+
+.statement-body {
+    margin-top: 1.75rem;
+}
+
+.tenets {
+    margin-top: clamp(2.5rem, 5vh, 4rem);
+}
+
+.caption {
+    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+/* Lead on the left, body on the right, on wide screens */
+@media (min-width: 1000px) {
+    .statement-inner:has(> .statement-lead) {
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+        column-gap: clamp(3rem, 6vw, 7rem);
+        align-items: end;
+    }
+
+    .statement-inner:has(> .statement-lead)::before,
+    .statement-inner:has(> .statement-lead) > .meta,
+    .statement-inner:has(> .statement-lead) > .tenets {
+        grid-column: 1 / -1;
+    }
+
+    .statement-inner:has(> .statement-lead) > .statement-body {
+        margin-top: 0;
+        padding-left: 1.5rem;
+        border-left: 1px solid rgba(138, 184, 216, 0.3);
+    }
+}
+
+/* A band with no picture: shorter, and tiled faintly so it isn't a black hole */
+.band-plain {
+    min-height: 0;
+    padding-top: clamp(4rem, 10vh, 6.5rem);
+    padding-bottom: clamp(4rem, 10vh, 6.5rem);
+    background:
+        linear-gradient(90deg, rgba(4, 6, 11, 0.97) 35%, rgba(4, 6, 11, 0.82)),
+        var(--tile);
+    background-size: auto, 64px 64px;
+}
+
+/* Footer: tile under a solid river-navy, the wave colour matches it */
+.foot {
+    background-color: #193d5b;
+}
+
+.foot .meta,
+.foot-base,
+.foot-base span {
+    color: #c9dceb;
+}
+
+/* Hero side word in stone, a touch lighter */
+.stage::after {
+    -webkit-text-stroke-color: rgba(230, 214, 190, 0.5);
+}
+
+/* The Archive heading sits mid-page, not under the masthead */
+.opening#archive {
+    padding-top: clamp(3.5rem, 8vh, 5.5rem);
+    padding-bottom: clamp(2rem, 5vh, 3.5rem);
+}
+
+.devlog {
+    padding-top: clamp(3rem, 6vw, 5rem);
+}
+
+/* Solid bar once scrolling, so headlines don't show through it */
+.masthead.scrolled,
+.menu-open .masthead {
+    background: var(--black);
+    border-bottom: 1px solid rgba(138, 184, 216, 0.18);
 }

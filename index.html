@@ -7,6 +7,8 @@
     <meta name="description"
         content="Hordalusa is an independent studio from Portugal. We build games and the technology behind them, from the ground up.">
     <meta name="theme-color" content="#000000">
+    <link rel="icon" type="image/png" sizes="128x128" href="brand/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="brand/favicon-32.png">
     <title>Hordalusa</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,7 +30,7 @@
 
 
     <header class="masthead">
-        <a href="index.html" class="mark">Hordalusa</a>
+        <a href="index.html" class="mark" aria-label="Hordalusa"><span>Horda</span><span>Lusa</span></a>
         <nav class="menu">
             <a href="index.html">Studio</a>
             <a href="porto.html">Project Porto</a>
@@ -39,7 +41,7 @@
     </header>
 
     <!-- ===================== STAGE ===================== -->
-    <section class="stage">
+    <section class="stage" data-word="PORTUGAL">
         <div class="stage-media">
             <img src="porto/porto-hero.png" alt="" fetchpriority="high">
         </div>
@@ -49,6 +51,10 @@
                 the technology behind them.</p>
         </div>
     </section>
+
+    <div class="ticker" aria-hidden="true">
+        <div class="ticker-track"><span>Project Porto</span><span>In development</span><span>Ribeira</span><span>Gaia</span><span>Rio Douro</span><span>Rain or shine</span><span>Day and night</span><span>Made in Portugal</span><span>Project Porto</span><span>In development</span><span>Ribeira</span><span>Gaia</span><span>Rio Douro</span><span>Rain or shine</span><span>Day and night</span><span>Made in Portugal</span><span>Project Porto</span><span>In development</span><span>Ribeira</span><span>Gaia</span><span>Rio Douro</span><span>Rain or shine</span><span>Day and night</span><span>Made in Portugal</span><span>Project Porto</span><span>In development</span><span>Ribeira</span><span>Gaia</span><span>Rio Douro</span><span>Rain or shine</span><span>Day and night</span><span>Made in Portugal</span></div>
+    </div>
 
     <!-- =========================================================================
          LATEST  (OCULTO: atributo "hidden" na <section>. Para voltar a mostrar,
@@ -133,8 +139,8 @@
     <section class="statement" id="studio">
         <div class="statement-inner">
             <span class="meta rise">The studio</span>
-            <p class="statement-lead rise">We build from the ground up, because owning the
-                technology is what makes the work our own.</p>
+            <p class="statement-lead rise">We build from the ground up, because <span class="hl">owning the
+                technology</span> is what makes the work our own.</p>
 
             <div class="statement-body rise">
                 <p>We write our own renderers, our own maths and our own tools. It takes longer,

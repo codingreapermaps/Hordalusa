@@ -7,6 +7,8 @@
     <meta name="description"
         content="Project Porto, an open-world game set in a fictional Porto, by Hordalusa. In development.">
     <meta name="theme-color" content="#000000">
+    <link rel="icon" type="image/png" sizes="128x128" href="brand/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="brand/favicon-32.png">
     <title>Project Porto, Hordalusa</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,7 +30,7 @@
 
 
     <header class="masthead">
-        <a href="index.html" class="mark">Hordalusa</a>
+        <a href="index.html" class="mark" aria-label="Hordalusa"><span>Horda</span><span>Lusa</span></a>
         <nav class="menu">
             <a href="index.html">Studio</a>
             <a href="porto.html">Project Porto</a>
@@ -38,7 +40,7 @@
         <button class="menu-btn" aria-expanded="false">Menu</button>
     </header>
 
-    <section class="stage">
+    <section class="stage" data-word="PORTO">
         <div class="stage-media">
             <img src="porto/porto-hero.png" alt="" fetchpriority="high" width="1280" height="720">
         </div>
@@ -50,10 +52,14 @@
         </div>
     </section>
 
+    <div class="ticker" aria-hidden="true">
+        <div class="ticker-track"><span>Project Porto</span><span>In development</span><span>Ribeira</span><span>Gaia</span><span>Rio Douro</span><span>Rain or shine</span><span>Day and night</span><span>Made in Portugal</span><span>Project Porto</span><span>In development</span><span>Ribeira</span><span>Gaia</span><span>Rio Douro</span><span>Rain or shine</span><span>Day and night</span><span>Made in Portugal</span></div>
+    </div>
+
     <section class="statement">
         <div class="statement-inner">
             <span class="meta rise">The game</span>
-            <p class="statement-lead rise">One day and one night in a city that carries on
+            <p class="statement-lead rise">One day and one night in a <span class="hl">city that carries on</span>
                 whether you are watching or not.</p>
 
             <div class="statement-body rise">

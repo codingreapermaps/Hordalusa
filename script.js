@@ -104,6 +104,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    /* --- Masthead state and scroll progress -------------------------------- */
+    const bar = document.querySelector('.masthead');
+    const prog = document.createElement('div');
+    prog.className = 'progress';
+    document.body.appendChild(prog);
+
+    const onScroll = () => {
+        const y = window.scrollY;
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        if (bar) bar.classList.toggle('scrolled', y > 40);
+        prog.style.transform = 'scaleX(' + (max > 0 ? Math.min(y / max, 1) : 0) + ')';
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
     /* --- Mark the current page -------------------------------------------- */
     const here = location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('.menu a').forEach(a => {
