@@ -31,8 +31,8 @@
         <a href="index.html" class="mark">Hordalusa</a>
         <nav class="menu">
             <a href="index.html">Studio</a>
+            <a href="porto.html">Project Porto</a>
             <a href="projects.html">Work</a>
-            <a href="lusa-engine.html">Engine</a>
             <a href="#contact">Contact</a>
         </nav>
         <button class="menu-btn" aria-expanded="false">Menu</button>
@@ -41,7 +41,7 @@
     <!-- ===================== STAGE ===================== -->
     <section class="stage">
         <div class="stage-media">
-            <img src="engine/render-02.png" alt="" fetchpriority="high">
+            <img src="porto/porto-hero.png" alt="" fetchpriority="high">
         </div>
         <div class="stage-content">
             <h1 class="title-xl">Hordalusa</h1>
@@ -51,7 +51,9 @@
     </section>
 
     <!-- =========================================================================
-         LATEST
+         LATEST  (OCULTO: atributo "hidden" na <section>. Para voltar a mostrar,
+         basta tirar o "hidden". O conteudo do devlog da Lusa Engine / Signal Lost
+         continua todo aqui e em lusa-engine.html.)
 
          As tres entradas mais recentes do devlog, espelhadas aqui. E' a unica
          coisa da homepage que muda, por isso vem logo a seguir ao hero.
@@ -61,7 +63,7 @@
          entrada nova em lusa-engine.html: o que estava em destaque passa a
          secundario, o ultimo secundario sai, e a nova entra no destaque.
          ====================================================================== -->
-    <section class="latest" id="latest">
+    <section class="latest" id="latest" hidden>
         <div class="latest-head">
             <div>
                 <span class="meta">Latest</span>
@@ -163,39 +165,26 @@
     </section>
 
     <!-- ===================== WORK ===================== -->
-    <a href="lusa-engine.html" class="band">
+    <a href="porto.html" class="band">
         <div class="band-media">
-            <img src="engine/render-01.png" alt="A render from Lusa Engine" loading="lazy">
+            <img src="porto/porto-rain.png" alt="The Douro under a heavy rain sky, the far bank and the bridge" loading="lazy">
         </div>
         <div class="band-content">
             <span class="meta">In development</span>
-            <h2 class="title-lg">Lusa Engine</h2>
-            <p>Our own 3D engine, built in-house. The foundation everything we make next
-                will be built on.</p>
-            <span class="go">Learn more &rarr;</span>
-        </div>
-    </a>
-
-    <a href="steel-and-blood.html" class="band">
-        <div class="band-media">
-            <img src="gameplay1.png" alt="Steel and Blood" loading="lazy">
-        </div>
-        <div class="band-content">
-            <span class="meta">Prototype &middot; 2025</span>
-            <h2 class="title-lg">Steel and Blood</h2>
-            <p>A physics-based gladiator roguelite where every hit carries weight.</p>
-            <span class="go">View the archive &rarr;</span>
+            <h2 class="title-lg">Project Porto</h2>
+            <p>An open-world game set in a fictional Porto. A city of steep streets, rain
+                and traffic that carries on whether you are watching or not.</p>
+            <span class="go">Explore the project &rarr;</span>
         </div>
     </a>
 
     <section class="band band-plain">
         <div class="band-content">
-            <span class="meta">Next</span>
-            <h2 class="title-lg">Signal Lost</h2>
-            <p>A first-person horror project on Lusa Engine. A police officer, a house,
-                a radio that stops answering. In development &mdash; the devlog is the
-                best way to follow it.</p>
-            <a href="lusa-engine.html#devlog" class="go">Follow the build &rarr;</a>
+            <span class="meta">Earlier work</span>
+            <h2 class="title-lg">Archive</h2>
+            <p>Lusa Engine, Signal Lost and Steel and Blood. The technology and the
+                projects that came before.</p>
+            <a href="projects.html#archive" class="go">See the archive &rarr;</a>
         </div>
     </section>
 
@@ -215,9 +204,9 @@
                 </div>
                 <div class="foot-col">
                     <span class="meta">Site</span>
+                    <a href="porto.html">Project Porto</a>
                     <a href="projects.html">Work</a>
-                    <a href="lusa-engine.html">Lusa Engine</a>
-                    <a href="steel-and-blood.html">Steel and Blood</a>
+                    <a href="projects.html#archive">Archive</a>
                 </div>
             </div>
 
