@@ -4,16 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Hordalusa is an independent studio from Portugal. We build games and the technology behind them, from the ground up.">
+    <meta name="description" content="Hordalusa is an independent studio from Portugal. We build games and the technology behind them, from the ground up.">
     <meta name="theme-color" content="#000000">
     <link rel="icon" type="image/png" sizes="128x128" href="brand/favicon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="brand/favicon-32.png">
     <title>Hordalusa</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
     <script src="loader.js" defer></script>
@@ -28,33 +26,37 @@
         <div class="loader-line"></div>
     </div>
 
-
     <header class="masthead">
         <a href="index.html" class="mark" aria-label="Hordalusa"><span>Horda</span><span>Lusa</span></a>
         <nav class="menu">
             <a href="index.html">Studio</a>
             <a href="porto.html">Project Porto</a>
             <a href="projects.html">Work</a>
-            <a href="#contact">Contact</a>
+            <a href="index.html#contact">Contact</a>
         </nav>
+        <a href="mailto:contact@hordalusa.com" class="btn btn-ghost btn-sm nav-cta">Get in touch</a>
         <button class="menu-btn" aria-expanded="false">Menu</button>
     </header>
 
-    <!-- ===================== STAGE ===================== -->
-    <section class="stage" data-word="PORTUGAL">
-        <div class="stage-media">
+    <main>
+
+    <!-- Feature: the game we are making now -->
+    <section class="feature">
+        <div class="feature-media">
             <img src="porto/porto-ribeira-walk.jpg" alt="" fetchpriority="high" width="1600" height="900" style="object-position: 85% 60%">
         </div>
-        <div class="stage-content">
-            <h1 class="title-xl">Hordalusa</h1>
-            <p class="body-lg">An independent studio from Portugal, building games and
-                the technology behind them.</p>
+        <div class="feature-body">
+            <div class="feature-tile is-porto" aria-hidden="true"></div>
+            <div class="feature-text">
+                <span class="eyebrow">Project Porto</span>
+                <h1 class="title-xl">A city that carries on without you</h1>
+            </div>
+            <div class="btns">
+                <a href="porto.html" class="btn btn-primary">Learn more</a>
+                <a href="https://instagram.com/hordalusa" target="_blank" rel="noopener" class="btn btn-ghost">Follow the build <span class="ext" aria-hidden="true">&#8599;</span></a>
+            </div>
         </div>
     </section>
-
-    <div class="ticker" aria-hidden="true">
-        <div class="ticker-track"><span>Project Porto</span><span>In development</span><span>Ribeira</span><span>Gaia</span><span>Rio Douro</span><span>Rain or shine</span><span>Day and night</span><span>Made in Portugal</span><span>Project Porto</span><span>In development</span><span>Ribeira</span><span>Gaia</span><span>Rio Douro</span><span>Rain or shine</span><span>Day and night</span><span>Made in Portugal</span><span>Project Porto</span><span>In development</span><span>Ribeira</span><span>Gaia</span><span>Rio Douro</span><span>Rain or shine</span><span>Day and night</span><span>Made in Portugal</span><span>Project Porto</span><span>In development</span><span>Ribeira</span><span>Gaia</span><span>Rio Douro</span><span>Rain or shine</span><span>Day and night</span><span>Made in Portugal</span></div>
-    </div>
 
     <!-- =========================================================================
          LATEST  (OCULTO: atributo "hidden" na <section>. Para voltar a mostrar,
@@ -135,69 +137,141 @@
         </div>
     </section>
 
-    <!-- ===================== STATEMENT ===================== -->
-    <section class="statement" id="studio">
-        <div class="statement-inner">
-            <span class="meta rise">The studio</span>
-            <p class="statement-lead rise">We build from the ground up, because <span class="hl">owning the
-                technology</span> is what makes the work our own.</p>
-
-            <div class="statement-body rise">
-                <p>We write our own renderers, our own maths and our own tools. It takes longer,
-                    and it gives us room that licensed technology doesn't.</p>
-                <p>We work at our own pace, on our own terms, and we show things when they're
-                    ready to be seen.</p>
+    <!-- Row of cards: the game in four pictures -->
+    <section class="section">
+        <div class="wrap">
+            <div class="section-head">
+                <div>
+                    <h2>Jump into Project Porto</h2>
+                    <p>An open-world game set in a fictional Porto, from the river to the top of the hill.</p>
+                </div>
+                <a href="porto.html" class="link-arrow">See the game &rarr;</a>
             </div>
+            <div class="cards">
+                <article class="card rise">
+                    <div class="card-media"><img src="thumbs/porto-rain.jpg" alt="Rain over the Douro and the bridge" loading="lazy" width="960" height="540"></div>
+                    <div class="card-body">
+                        <span class="card-tag">Weather</span>
+                        <h3>Rain or shine</h3>
+                        <p>Clouds roll in, rain fills the streets and the puddles stay.</p>
+                        <a href="porto.html#features" class="btn btn-dark btn-sm">Learn more</a>
+                    </div>
+                </article>
+                <article class="card rise">
+                    <div class="card-media"><img src="thumbs/porto-river-dusk.jpg" alt="The far bank at dusk" loading="lazy" width="960" height="540"></div>
+                    <div class="card-body">
+                        <span class="card-tag">Time</span>
+                        <h3>Day into night</h3>
+                        <p>The light changes the whole city, hour by hour.</p>
+                        <a href="porto.html#gallery" class="btn btn-dark btn-sm">See screenshots</a>
+                    </div>
+                </article>
+                <article class="card rise">
+                    <div class="card-media"><img src="thumbs/porto-hill-day.jpg" alt="Tall coloured houses on the hill" loading="lazy" width="960" height="540"></div>
+                    <div class="card-body">
+                        <span class="card-tag">The city</span>
+                        <h3>Streets that climb</h3>
+                        <p>Narrow streets, stairways and tall houses above the river.</p>
+                        <a href="porto.html#features" class="btn btn-dark btn-sm">Learn more</a>
+                    </div>
+                </article>
+                <article class="card rise">
+                    <div class="card-media"><img src="thumbs/porto-river-day.jpg" alt="The Ribeira and the bridge on a clear day" loading="lazy" width="960" height="540"></div>
+                    <div class="card-body">
+                        <span class="card-tag">Status</span>
+                        <h3>In development</h3>
+                        <p>Built for PC. Follow along as the city comes together.</p>
+                        <a href="https://instagram.com/hordalusa" class="btn btn-dark btn-sm" target="_blank" rel="noopener">Instagram <span class="ext" aria-hidden="true">&#8599;</span></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
 
-            <div class="tenets">
-                <div class="tenet rise">
-                    <h3>Build it to understand it</h3>
-                    <p>We'd rather know how something works than only how to use it.</p>
+    <!-- The studio -->
+    <section class="section" id="studio">
+        <div class="wrap">
+            <div class="studio">
+                <div>
+                    <span class="eyebrow">The studio</span>
+                    <h2 style="margin-top:.6rem">We build from the ground up.</h2>
                 </div>
-                <div class="tenet rise">
-                    <h3>Depth over speed</h3>
-                    <p>The long route leaves us more to work with.</p>
+                <div>
+                    <p>Hordalusa is an independent studio from Portugal. We write our own tools and
+                        technology, because owning them is what makes the work our own.</p>
+                    <p>We work at our own pace and show things when they're ready to be seen.</p>
                 </div>
-                <div class="tenet rise">
-                    <h3>Small and finished</h3>
-                    <p>Better to complete something focused than start something vast.</p>
+            </div>
+            <div class="values">
+                <div class="value rise"><span class="num">01</span><h3>Build it to understand it</h3><p>We'd rather know how something works than only how to use it.</p></div>
+                <div class="value rise"><span class="num">02</span><h3>Depth over speed</h3><p>The long route leaves us more to work with.</p></div>
+                <div class="value rise"><span class="num">03</span><h3>Small and finished</h3><p>Better to complete something focused than start something vast.</p></div>
+                <div class="value rise"><span class="num">04</span><h3>Own the tools</h3><p>No licences, no royalties, no black boxes we can't open.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Library -->
+    <section class="section">
+        <div class="wrap">
+            <div class="section-head">
+                <h2>Our work</h2>
+                <a href="projects.html" class="link-arrow">View all &rarr;</a>
+            </div>
+            <div class="library">
+                <a href="porto.html" class="tile rise is-featured">
+                    <img src="thumbs/porto-ribeira-walk.jpg" alt="Walking the Ribeira quay in Project Porto" loading="lazy">
+                    <div class="tile-text">
+                        <span class="card-tag">In development</span>
+                        <h3>Project Porto</h3>
+                    </div>
+                </a>
+                <a href="lusa-engine.html" class="tile rise">
+                    <img src="thumbs/lusa-engine.jpg" alt="A street at night in Lusa Engine" loading="lazy">
+                    <div class="tile-text">
+                        <span class="card-tag">Technology</span>
+                        <h3>Lusa Engine</h3>
+                    </div>
+                </a>
+                <a href="lusa-engine.html#devlog" class="tile rise">
+                    <img src="thumbs/signal-lost.jpg" alt="The hall of the house in Signal Lost" loading="lazy">
+                    <div class="tile-text">
+                        <span class="card-tag">Horror &middot; Paused</span>
+                        <h3>Signal Lost</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+        <div class="wrap">
+            <div class="cta-card">
+                <div>
+                    <h2>Talk to us</h2>
+                    <p>Press, partnerships or just a hello. We read everything.</p>
                 </div>
-                <div class="tenet rise">
-                    <h3>Own the tools</h3>
-                    <p>No licences, no royalties, no black boxes we can't open.</p>
+                <div class="btns">
+                    <a href="mailto:contact@hordalusa.com" class="btn btn-primary">contact@hordalusa.com</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===================== WORK ===================== -->
-    <a href="porto.html" class="band">
-        <div class="band-media">
-            <img src="porto/porto-rain.png" alt="The Douro under a heavy rain sky, the far bank and the bridge" loading="lazy">
-        </div>
-        <div class="band-content">
-            <span class="meta">In development</span>
-            <h2 class="title-lg">Project Porto</h2>
-            <p>An open-world game set in a fictional Porto. A city of steep streets, rain
-                and traffic that carries on whether you are watching or not.</p>
-            <span class="go">Explore the project &rarr;</span>
-        </div>
-    </a>
+    </main>
 
-    <section class="band band-plain">
-        <div class="band-content">
-            <span class="meta">Earlier work</span>
-            <h2 class="title-lg">Archive</h2>
-            <p>Lusa Engine, Signal Lost and Steel and Blood. The technology and the
-                projects that came before.</p>
-            <a href="projects.html#archive" class="go">See the archive &rarr;</a>
-        </div>
-    </section>
-
-    <!-- ===================== FOOT ===================== -->
-    <footer class="foot" id="contact">
+    <footer class="foot">
         <div class="foot-inner">
-            <a href="mailto:contact@hordalusa.com" class="foot-cta">Get in touch</a>
+            <div class="foot-top">
+                <a href="index.html" class="foot-logo" aria-label="Hordalusa, home">
+                    <img src="brand/logo-full.png" alt="Hordalusa" width="900" height="500" loading="lazy">
+                </a>
+                <div class="btns">
+                    <a href="mailto:contact@hordalusa.com" class="btn btn-primary">Get in touch</a>
+                    <a href="https://instagram.com/hordalusa" target="_blank" rel="noopener" class="btn btn-ghost">Instagram <span class="ext" aria-hidden="true">&#8599;</span></a>
+                </div>
+            </div>
 
             <div class="foot-rows">
                 <div class="foot-col">
@@ -205,20 +279,20 @@
                     <a href="mailto:contact@hordalusa.com">contact@hordalusa.com</a>
                 </div>
                 <div class="foot-col">
-                    <span class="meta">Elsewhere</span>
-                    <a href="https://instagram.com/hordalusa" target="_blank" rel="noopener">Instagram</a>
+                    <span class="meta">Games</span>
+                    <a href="porto.html">Project Porto</a>
+                    <a href="projects.html#archive">Archive</a>
                 </div>
                 <div class="foot-col">
-                    <span class="meta">Site</span>
-                    <a href="porto.html">Project Porto</a>
+                    <span class="meta">Studio</span>
+                    <a href="index.html#studio">About</a>
                     <a href="projects.html">Work</a>
-                    <a href="projects.html#archive">Archive</a>
                 </div>
             </div>
 
             <div class="foot-base">
                 <span>&copy; 2026 Hordalusa</span>
-                <span>Portugal</span>
+                <span>Made in Portugal</span>
             </div>
         </div>
     </footer>

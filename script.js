@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* --- Lightbox ---------------------------------------------------------- */
-    const shots = document.querySelectorAll('.log-shots img, .log-media img');
+    const shots = document.querySelectorAll('.log-shots img, .log-media img, .gallery img');
 
     if (shots.length) {
         const box = document.createElement('div');
@@ -123,6 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const here = location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('.menu a').forEach(a => {
         const href = a.getAttribute('href');
-        if (href && href.split('#')[0] === here) a.setAttribute('aria-current', 'page');
+        // Links to a section (#contact) are not the page itself.
+        if (href && !href.includes('#') && href === here) a.setAttribute('aria-current', 'page');
     });
 });

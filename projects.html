@@ -4,15 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Work by Hordalusa, games, engines and prototypes built in-house.">
+    <meta name="description" content="Work by Hordalusa: games, engines and prototypes built in-house.">
     <meta name="theme-color" content="#000000">
     <link rel="icon" type="image/png" sizes="128x128" href="brand/favicon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="brand/favicon-32.png">
     <title>Work, Hordalusa</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
     <script src="loader.js" defer></script>
@@ -27,7 +26,6 @@
         <div class="loader-line"></div>
     </div>
 
-
     <header class="masthead">
         <a href="index.html" class="mark" aria-label="Hordalusa"><span>Horda</span><span>Lusa</span></a>
         <nav class="menu">
@@ -36,77 +34,102 @@
             <a href="projects.html">Work</a>
             <a href="index.html#contact">Contact</a>
         </nav>
+        <a href="mailto:contact@hordalusa.com" class="btn btn-ghost btn-sm nav-cta">Get in touch</a>
         <button class="menu-btn" aria-expanded="false">Menu</button>
     </header>
+
+    <main>
 
     <section class="opening">
         <div class="opening-inner">
             <span class="meta">Work</span>
-            <h1 class="title-lg">Projects</h1>
-            <p class="body-lg">What we're making, and what we've made.</p>
+            <h1 class="title-xl">Games and technology</h1>
+            <p class="body-lg" style="margin-top:1rem">What we're making, and what we've made.</p>
         </div>
     </section>
 
-    <a href="porto.html" class="band">
-        <div class="band-media">
-            <img src="porto/porto-rain.png" alt="The Douro under a heavy rain sky, the far bank and the bridge" loading="lazy">
-        </div>
-        <div class="band-content">
-            <span class="meta">In development</span>
-            <h2 class="title-lg">Project Porto</h2>
-            <p>An open-world game set in a fictional Porto. A city of steep streets, rain
-                and traffic that carries on whether you are watching or not.</p>
-            <span class="go">Explore the project &rarr;</span>
-        </div>
-    </a>
-
-    <section class="opening" id="archive">
-        <div class="opening-inner">
-            <span class="meta">Archive</span>
-            <h2 class="title-lg">Earlier work</h2>
-            <p class="body-lg">The technology and the projects that came before Project Porto.</p>
+    <section class="section" style="padding-top:0">
+        <div class="wrap">
+            <div class="section-head"><h2>Now</h2></div>
+            <div class="library">
+                <a href="porto.html" class="tile rise is-featured">
+                    <img src="thumbs/porto-ribeira-walk.jpg" alt="Walking the Ribeira quay in Project Porto" loading="lazy">
+                    <div class="tile-text">
+                        <span class="card-tag">In development &middot; PC</span>
+                        <h3>Project Porto</h3>
+                    </div>
+                </a>
+                <a href="porto.html#gallery" class="tile rise">
+                    <img src="thumbs/porto-rain.jpg" alt="Rain over the Douro" loading="lazy">
+                    <div class="tile-text">
+                        <span class="card-tag">Screenshots</span>
+                        <h3>The city in the rain</h3>
+                    </div>
+                </a>
+                <a href="porto.html#features" class="tile rise">
+                    <img src="thumbs/porto-hill-day.jpg" alt="Houses on the hill" loading="lazy">
+                    <div class="tile-text">
+                        <span class="card-tag">Features</span>
+                        <h3>What makes it Porto</h3>
+                    </div>
+                </a>
+            </div>
         </div>
     </section>
 
-    <a href="lusa-engine.html" class="band">
-        <div class="band-media">
-            <img src="engine/render-01.png" alt="A render from Lusa Engine" loading="lazy">
+    <section class="section" id="archive">
+        <div class="wrap">
+            <div class="section-head">
+                <div>
+                    <h2>Archive</h2>
+                    <p>The technology and the projects that came before Project Porto.</p>
+                </div>
+            </div>
+            <div class="cards three">
+                <article class="card rise">
+                    <div class="card-media"><img src="thumbs/lusa-engine.jpg" alt="A street at night in Lusa Engine" loading="lazy" width="960" height="540"></div>
+                    <div class="card-body">
+                        <span class="card-tag">Technology &middot; 2026</span>
+                        <h3>Lusa Engine</h3>
+                        <p>Our own 3D engine, built in-house, with its devlog.</p>
+                        <a href="lusa-engine.html" class="btn btn-dark btn-sm">Read the devlog</a>
+                    </div>
+                </article>
+                <article class="card rise">
+                    <div class="card-media"><img src="thumbs/signal-lost.jpg" alt="The hall of the house in Signal Lost" loading="lazy" width="960" height="540"></div>
+                    <div class="card-body">
+                        <span class="card-tag">First-person horror</span>
+                        <h3>Signal Lost</h3>
+                        <p>A police officer, a house, a radio that stops answering.</p>
+                        <a href="lusa-engine.html#devlog" class="btn btn-dark btn-sm">Follow the build log</a>
+                    </div>
+                </article>
+                <article class="card rise">
+                    <div class="card-media"><img src="thumbs/steel-and-blood.jpg" alt="Steel and Blood gameplay" loading="lazy" width="960" height="540"></div>
+                    <div class="card-body">
+                        <span class="card-tag">Prototype &middot; 2025</span>
+                        <h3>Steel and Blood</h3>
+                        <p>A physics-based gladiator roguelite where every hit carries weight.</p>
+                        <a href="steel-and-blood.html" class="btn btn-dark btn-sm">View the archive</a>
+                    </div>
+                </article>
+            </div>
         </div>
-        <div class="band-content">
-            <span class="meta">Technology &middot; 2026</span>
-            <h2 class="title-lg">Lusa Engine</h2>
-            <p>Our own 3D engine, built in-house, with its devlog.</p>
-            <span class="go">Read the devlog &rarr;</span>
-        </div>
-    </a>
+    </section>
 
-    <a href="lusa-engine.html#devlog" class="band">
-        <div class="band-media">
-            <img src="engine/signal-lost-hall-01.png" alt="The hall of the house in Signal Lost" loading="lazy">
-        </div>
-        <div class="band-content">
-            <span class="meta">First-person horror</span>
-            <h2 class="title-lg">Signal Lost</h2>
-            <p>A police officer, a house, a radio that stops answering. Built on Lusa Engine.</p>
-            <span class="go">Follow the build log &rarr;</span>
-        </div>
-    </a>
-
-    <a href="steel-and-blood.html" class="band">
-        <div class="band-media">
-            <img src="gameplay2.png" alt="Steel and Blood" loading="lazy">
-        </div>
-        <div class="band-content">
-            <span class="meta">Prototype &middot; 2025 &middot; Archived</span>
-            <h2 class="title-lg">Steel and Blood</h2>
-            <p>A physics-based gladiator roguelite where every hit carries weight.</p>
-            <span class="go">View the archive &rarr;</span>
-        </div>
-    </a>
+    </main>
 
     <footer class="foot">
         <div class="foot-inner">
-            <a href="mailto:contact@hordalusa.com" class="foot-cta">Get in touch</a>
+            <div class="foot-top">
+                <a href="index.html" class="foot-logo" aria-label="Hordalusa, home">
+                    <img src="brand/logo-full.png" alt="Hordalusa" width="900" height="500" loading="lazy">
+                </a>
+                <div class="btns">
+                    <a href="mailto:contact@hordalusa.com" class="btn btn-primary">Get in touch</a>
+                    <a href="https://instagram.com/hordalusa" target="_blank" rel="noopener" class="btn btn-ghost">Instagram <span class="ext" aria-hidden="true">&#8599;</span></a>
+                </div>
+            </div>
 
             <div class="foot-rows">
                 <div class="foot-col">
@@ -114,20 +137,20 @@
                     <a href="mailto:contact@hordalusa.com">contact@hordalusa.com</a>
                 </div>
                 <div class="foot-col">
-                    <span class="meta">Elsewhere</span>
-                    <a href="https://instagram.com/hordalusa" target="_blank" rel="noopener">Instagram</a>
+                    <span class="meta">Games</span>
+                    <a href="porto.html">Project Porto</a>
+                    <a href="projects.html#archive">Archive</a>
                 </div>
                 <div class="foot-col">
-                    <span class="meta">Site</span>
-                    <a href="index.html">Studio</a>
-                    <a href="porto.html">Project Porto</a>
-                    <a href="#archive">Archive</a>
+                    <span class="meta">Studio</span>
+                    <a href="index.html#studio">About</a>
+                    <a href="projects.html">Work</a>
                 </div>
             </div>
 
             <div class="foot-base">
                 <span>&copy; 2026 Hordalusa</span>
-                <span>Portugal</span>
+                <span>Made in Portugal</span>
             </div>
         </div>
     </footer>

@@ -4,16 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Project Porto, an open-world game set in a fictional Porto, by Hordalusa. In development.">
+    <meta name="description" content="Project Porto, an open-world game set in a fictional Porto, by Hordalusa. In development for PC.">
     <meta name="theme-color" content="#000000">
     <link rel="icon" type="image/png" sizes="128x128" href="brand/favicon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="brand/favicon-32.png">
     <title>Project Porto, Hordalusa</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
     <script src="loader.js" defer></script>
@@ -28,7 +26,6 @@
         <div class="loader-line"></div>
     </div>
 
-
     <header class="masthead">
         <a href="index.html" class="mark" aria-label="Hordalusa"><span>Horda</span><span>Lusa</span></a>
         <nav class="menu">
@@ -37,96 +34,133 @@
             <a href="projects.html">Work</a>
             <a href="index.html#contact">Contact</a>
         </nav>
+        <a href="mailto:contact@hordalusa.com" class="btn btn-ghost btn-sm nav-cta">Get in touch</a>
         <button class="menu-btn" aria-expanded="false">Menu</button>
     </header>
 
-    <section class="stage" data-word="PORTO">
-        <div class="stage-media">
+    <main>
+
+    <section class="feature">
+        <div class="feature-media">
             <img src="porto/porto-ribeira-walk.jpg" alt="" fetchpriority="high" width="1600" height="900" style="object-position: 85% 60%">
         </div>
-        <div class="stage-content">
-            <span class="meta">In development</span>
-            <h1 class="title-xl">Project Porto</h1>
-            <p class="body-lg">An open-world game set in a fictional Porto, from the river up
-                to the top of the hill.</p>
+        <div class="feature-body">
+            <div class="feature-tile is-porto" aria-hidden="true"></div>
+            <div class="feature-text">
+                <span class="eyebrow">In development &middot; PC</span>
+                <h1 class="title-xl">Project Porto</h1>
+            </div>
+            <p class="body-lg feature-sub">An open-world game set in a fictional Porto, from the river
+                up to the top of the hill.</p>
+            <div class="btns">
+                <a href="#gallery" class="btn btn-primary">See screenshots</a>
+                <a href="https://instagram.com/hordalusa" target="_blank" rel="noopener" class="btn btn-ghost">Follow the build <span class="ext" aria-hidden="true">&#8599;</span></a>
+            </div>
         </div>
     </section>
 
-    <div class="ticker" aria-hidden="true">
-        <div class="ticker-track"><span>Project Porto</span><span>In development</span><span>Ribeira</span><span>Gaia</span><span>Rio Douro</span><span>Rain or shine</span><span>Day and night</span><span>Made in Portugal</span><span>Project Porto</span><span>In development</span><span>Ribeira</span><span>Gaia</span><span>Rio Douro</span><span>Rain or shine</span><span>Day and night</span><span>Made in Portugal</span></div>
-    </div>
-
-    <section class="statement">
-        <div class="statement-inner">
-            <span class="meta rise">The game</span>
-            <p class="statement-lead rise">One day and one night in a <span class="hl">city that carries on</span>
-                whether you are watching or not.</p>
-
-            <div class="statement-body rise">
-                <p>Project Porto is a third-person open-world game built around the Ribeira,
-                    the quay along the Douro, and the steep streets that climb away from it.
-                    It is Porto as we remember it, bent a little to suit the game.</p>
-                <p>Traffic moves, people eat, shelter from the rain and go home, and the police
-                    are felt long before they are seen. The city is the thing we are making;
-                    everything else happens inside it.</p>
-            </div>
-
-            <div class="tenets">
-                <div class="tenet rise">
-                    <h3>A city with slopes</h3>
-                    <p>Narrow streets, stairways and tall houses. Cars have to climb, and people
-                        have to take the shortcuts.</p>
+    <section class="section">
+        <div class="wrap">
+            <div class="studio">
+                <div>
+                    <span class="eyebrow">The game</span>
+                    <h2 style="margin-top:.6rem">One day and one night in a city that carries on whether you are watching or not.</h2>
                 </div>
-                <div class="tenet rise">
-                    <h3>Weather and time</h3>
-                    <p>Day turns to night and the sky changes its mind. Rain fills the streets
-                        and the puddles stay.</p>
-                </div>
-                <div class="tenet rise">
-                    <h3>People who live there</h3>
-                    <p>Pedestrians with routines, shops with interiors, traffic that behaves
-                        like traffic.</p>
-                </div>
-                <div class="tenet rise">
-                    <h3>Pressure, not stars</h3>
-                    <p>The law reacts to what it sees. There is no counter telling you how
-                        much trouble you are in.</p>
+                <div>
+                    <p>Project Porto is a third-person open-world game built around the Ribeira, the quay
+                        along the Douro, and the steep streets that climb away from it. It is Porto as we
+                        remember it, bent a little to suit the game.</p>
+                    <p>Traffic moves, people eat, shelter from the rain and go home, and the police are
+                        felt long before they are seen. The city is the thing we are making; everything
+                        else happens inside it.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="strip">
-        <img src="porto/porto-river-day.png" alt="The far bank of the Douro on a clear day, the bridge on the right"
-             loading="lazy" width="1280" height="720">
-        <img src="porto/porto-river-dusk.png" alt="The same view at dusk, under a purple sky"
-             loading="lazy" width="1280" height="720">
-    </div>
-    <p class="caption">The same view, clear day and dusk. Work in progress.</p>
-
-    <div class="strip">
-        <img src="porto/porto-hill-day.png" alt="Tall coloured houses on the hill under a blue sky and clouds"
-             loading="lazy" width="1280" height="720">
-        <img src="porto/porto-hill-dusk.png" alt="The same houses at sunset, windows beginning to light"
-             loading="lazy" width="1280" height="720">
-    </div>
-    <p class="caption">Up the hill: weather and time of day change the whole street.</p>
-
-    <section class="statement">
-        <div class="statement-inner">
-            <span class="meta rise">Status</span>
-            <p class="statement-lead rise">In development, for PC.</p>
-            <div class="statement-body rise">
-                <p>The first playable area covers the Ribeira and the hill above it, plus the
-                    far bank. Everything on this page comes from the work-in-progress build and
-                    will change. We will share more when it is ready to be seen.</p>
+    <section class="section" id="features">
+        <div class="wrap">
+            <div class="section-head"><h2>What makes it Porto</h2></div>
+            <div class="cards">
+                <article class="card rise">
+                    <div class="card-media"><img src="thumbs/porto-hill-day.jpg" alt="Tall coloured houses on the hill" loading="lazy" width="960" height="540"></div>
+                    <div class="card-body">
+                        <h3>A city with slopes</h3>
+                        <p>Narrow streets, stairways and tall houses. Cars have to climb, and people take the shortcuts.</p>
+                    </div>
+                </article>
+                <article class="card rise">
+                    <div class="card-media"><img src="thumbs/porto-rain.jpg" alt="Rain clouds over the river" loading="lazy" width="960" height="540"></div>
+                    <div class="card-body">
+                        <h3>Weather and time</h3>
+                        <p>Day turns to night and the sky changes its mind. Rain fills the streets and the puddles stay.</p>
+                    </div>
+                </article>
+                <article class="card rise">
+                    <div class="card-media"><img src="thumbs/porto-ribeira-walk.jpg" alt="People walking along the quay" loading="lazy" width="960" height="540"></div>
+                    <div class="card-body">
+                        <h3>People who live there</h3>
+                        <p>Pedestrians with routines, shops with interiors, traffic that behaves like traffic.</p>
+                    </div>
+                </article>
+                <article class="card rise">
+                    <div class="card-media"><img src="thumbs/porto-hill-dusk.jpg" alt="The hill at sunset" loading="lazy" width="960" height="540"></div>
+                    <div class="card-body">
+                        <h3>Pressure, not stars</h3>
+                        <p>The law reacts to what it sees. No counter tells you how much trouble you are in.</p>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
+
+    <section class="section" id="gallery">
+        <div class="wrap">
+            <div class="section-head">
+                <div>
+                    <h2>Screenshots</h2>
+                    <p>Taken from the work-in-progress build. Everything here will change.</p>
+                </div>
+            </div>
+            <div class="gallery">
+                <figure class="wide"><img src="porto/porto-ribeira-walk.jpg" alt="Walking along the Ribeira quay under a cloudy sky" loading="lazy" width="1600" height="900"></figure>
+                <figure><img src="porto/porto-rain.jpg" alt="Rain over the Douro and the bridge" loading="lazy" width="1280" height="720"></figure>
+                <figure><img src="porto/porto-river-dusk.jpg" alt="The far bank at dusk" loading="lazy" width="1280" height="720"></figure>
+                <figure><img src="porto/porto-river-day.jpg" alt="The Ribeira and the bridge on a clear day" loading="lazy" width="1280" height="720"></figure>
+                <figure><img src="porto/porto-hill-day.jpg" alt="Coloured houses on the hill" loading="lazy" width="1280" height="720"></figure>
+                <figure><img src="porto/porto-hill-dusk.jpg" alt="The hill at sunset, windows lighting up" loading="lazy" width="1280" height="720"></figure>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="wrap">
+            <div class="cta-card">
+                <div>
+                    <span class="eyebrow">Status</span>
+                    <h2 style="margin-top:.5rem">In development, for PC</h2>
+                    <p>The first playable area covers the Ribeira, the hill above it and the far bank.</p>
+                </div>
+                <div class="btns">
+                    <a href="mailto:contact@hordalusa.com" class="btn btn-primary">Get in touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </main>
 
     <footer class="foot">
         <div class="foot-inner">
-            <a href="mailto:contact@hordalusa.com" class="foot-cta">Get in touch</a>
+            <div class="foot-top">
+                <a href="index.html" class="foot-logo" aria-label="Hordalusa, home">
+                    <img src="brand/logo-full.png" alt="Hordalusa" width="900" height="500" loading="lazy">
+                </a>
+                <div class="btns">
+                    <a href="mailto:contact@hordalusa.com" class="btn btn-primary">Get in touch</a>
+                    <a href="https://instagram.com/hordalusa" target="_blank" rel="noopener" class="btn btn-ghost">Instagram <span class="ext" aria-hidden="true">&#8599;</span></a>
+                </div>
+            </div>
 
             <div class="foot-rows">
                 <div class="foot-col">
@@ -134,20 +168,20 @@
                     <a href="mailto:contact@hordalusa.com">contact@hordalusa.com</a>
                 </div>
                 <div class="foot-col">
-                    <span class="meta">Elsewhere</span>
-                    <a href="https://instagram.com/hordalusa" target="_blank" rel="noopener">Instagram</a>
+                    <span class="meta">Games</span>
+                    <a href="porto.html">Project Porto</a>
+                    <a href="projects.html#archive">Archive</a>
                 </div>
                 <div class="foot-col">
-                    <span class="meta">Site</span>
-                    <a href="index.html">Studio</a>
+                    <span class="meta">Studio</span>
+                    <a href="index.html#studio">About</a>
                     <a href="projects.html">Work</a>
-                    <a href="projects.html#archive">Archive</a>
                 </div>
             </div>
 
             <div class="foot-base">
                 <span>&copy; 2026 Hordalusa</span>
-                <span>Portugal</span>
+                <span>Made in Portugal</span>
             </div>
         </div>
     </footer>
