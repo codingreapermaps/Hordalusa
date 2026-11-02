@@ -2295,3 +2295,17 @@ main > .section:last-child {
         display: none;
     }
 }
+
+/* Filled buttons in river blue, not stone */
+.btn-primary,
+.go {
+    background: var(--river);
+    color: #fff;
+}
+
+.btn-primary:hover,
+.band:hover .go,
+.go:hover {
+    background: #3576a8;
+    color: #fff;
+}
