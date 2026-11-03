@@ -1071,6 +1071,11 @@ body.loading {
     border-color: rgba(255, 255, 255, 0.28);
 }
 
+.log[data-track="porto"] .log-track {
+    color: var(--river-light);
+    border-color: rgba(138, 184, 216, 0.4);
+}
+
 .log[hidden] {
     display: none;
 }

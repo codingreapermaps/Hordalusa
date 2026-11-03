@@ -109,11 +109,131 @@
 
         <div class="log-filter">
             <button type="button" data-filter="all" aria-pressed="true">Everything</button>
+            <button type="button" data-filter="porto" aria-pressed="false">Project Porto</button>
             <button type="button" data-filter="engine" aria-pressed="false">Engine</button>
             <button type="button" data-filter="game" aria-pressed="false">Signal Lost</button>
         </div>
 
         <div class="log-list">
+
+            <article class="log rise" data-track="porto">
+                <div class="log-meta">
+                    <span class="log-version">v1.4</span>
+                    <span class="log-track">Project Porto</span>
+                    <span class="log-date">November 2026</span>
+                    <span class="log-no">14</span>
+                </div>
+                <div class="log-body">
+                    <h3 class="log-title">Two wheels</h3>
+                    <p>A car stays upright on its own; a motorbike does not. The game has had cars for a while, but two wheels are a different problem. The support polygon collapses to a line, so a stopped bike falls. The fix is the same one real riders use without thinking: lean into the turn.</p>
+                    <p>The target lean comes from the turn: tan &theta; = v&sup2; / (g &middot; R), capped at 42&deg; on the motorbike and 30&deg; on the scooter, because the tyres only grip so far. An invisible hand, a PD controller, pushes the bike toward that angle every physics step, and below 7 km/h it stiffens and holds the bike upright, like a kickstand. The tyres are round in profile, so the contact point moves up the sidewall as the bike leans; the game measures that height instead of pretending the wheel is vertical.</p>
+                    <p>Both are modelled from scratch in Blender: a 125 cc bike (24,384 triangles) and an electric scooter (9,756), with named parts (RodaF, RodaT, Guiador, Ponto_Banco&hellip;) telling the engine what moves. 110 km/h and 25 km/h, the latter being the legal limit. No falling off yet; the rider steps off like from a car.</p>
+                </div>
+                <div class="log-shots" data-shots="2">
+                    <figure>
+                        <img src="porto/porto-bike.jpg"
+                             alt="The motorbike, modelled in Blender"
+                             loading="lazy" width="1280" height="720">
+                    </figure>
+                    <figure>
+                        <img src="porto/porto-scooter.jpg"
+                             alt="The electric scooter"
+                             loading="lazy" width="1280" height="720">
+                    </figure>
+                </div>
+            </article>
+
+            <article class="log rise" data-track="porto">
+                <div class="log-meta">
+                    <span class="log-version">v1.3</span>
+                    <span class="log-track">Project Porto</span>
+                    <span class="log-date">October 2026</span>
+                    <span class="log-no">13</span>
+                </div>
+                <div class="log-body">
+                    <h3 class="log-title">A place of your own</h3>
+                    <p>Until now you walk, drive and swim, but have nowhere to live. Now there is a goal that looks like real life: read listings, visit, rent or buy, then furnish. Four listings sit in the window of a fictional estate agent on the Marginal; the first two are visitable and purchasable, the other two are on the board for later.</p>
+                    <p>The numbers are real-ish: about &euro;5,350 per m&sup2; around the Ribeira, rent at roughly 5.8% a year. The rooftop listing is &euro;329,000 for 58 m&sup2; with a 23 m&sup2; terrace; buying on credit means 10% down plus 6% in costs, the rest over 30 years at 3.5%, about &euro;1,330 a month. The apartment sits on top of a real building, terrace facing the Douro, the quay 26 metres below.</p>
+                    <p>The building is empty when you get it. NINHO, the furniture shop, has pieces named after Portuguese rivers (sof&aacute; T&Acirc;MEGA, cama SOUSA, mesa VOUGA) priced like a cheap real shop. You carry one, place it, rotate it 15&deg; at a time, and the game tells you if it fits. The LIMA floor lamp even lights up. Saving and loading keeps the house and the furniture where you left them. What does not work yet: monthly rent and mortgage are not charged, and only the first listing opens.</p>
+                </div>
+                <div class="log-shots" data-shots="3">
+                    <figure>
+                        <img src="porto/porto-estate.jpg"
+                             alt="An apartment listing in the estate agent's window"
+                             loading="lazy" width="1280" height="720">
+                    </figure>
+                    <figure>
+                        <img src="porto/porto-house.jpg"
+                             alt="The apartment, furnished, looking out over the river"
+                             loading="lazy" width="1280" height="720">
+                    </figure>
+                    <figure>
+                        <img src="porto/porto-ninho.jpg"
+                             alt="The NINHO furniture shop, the T&Acirc;MEGA sofa with its price tag"
+                             loading="lazy" width="1280" height="720">
+                    </figure>
+                </div>
+            </article>
+
+            <article class="log rise" data-track="porto">
+                <div class="log-meta">
+                    <span class="log-version">v1.2</span>
+                    <span class="log-track">Project Porto</span>
+                    <span class="log-date">October 2026</span>
+                    <span class="log-no">12</span>
+                </div>
+                <div class="log-body">
+                    <h3 class="log-title">Menus and saves</h3>
+                    <p>The game used to drop you straight into the street. Now it starts in a menu: the world is already loaded behind it, the camera makes a slow circle over the Ribeira, and only &ldquo;Continue&rdquo; or &ldquo;New game&rdquo; hands over control. Esc opens the pause: the clock stops, but the river and the clouds keep moving, because those run on the window clock and it looks better that way.</p>
+                    <p>The pause is the Unity one rebuilt: the street you are on in large type, the date and time, a list on the left with the selected line on a card that slides to its place, and on the right what that line shows &mdash; your wallet and four thin bars (health, energy, hunger, thirst) on Resume; how many saves you have on Save and Load; a warning on Quit. Everything is drawn in code, no hand-made images, so it carries over to the engine's 2D painter.</p>
+                    <p>Five save slots, one file each. The header stores the date, the street, the in-game hour and your money, so the list shows them without reading the rest. The body stores position, heading, the four needs, clothes, the house and the furniture. Saving only works on foot, out of water and out of shops; in a car or swimming, Save is greyed out with the reason under it. Old saves from before this change read as &ldquo;from another version&rdquo; and will not load, because the block grew. Honest limits: keyboard only, no mouse, no options menu, and the car and your shopping bag do not survive a load.</p>
+                </div>
+                <div class="log-shots" data-shots="3">
+                    <figure>
+                        <img src="porto/porto-menu.jpg"
+                             alt="The title screen, THE WAY IT IS over the Ribeira"
+                             loading="lazy" width="1280" height="720">
+                    </figure>
+                    <figure>
+                        <img src="porto/porto-pause.jpg"
+                             alt="The pause menu over the city"
+                             loading="lazy" width="1280" height="720">
+                    </figure>
+                    <figure>
+                        <img src="porto/porto-save.jpg"
+                             alt="The save and load screen"
+                             loading="lazy" width="1280" height="720">
+                    </figure>
+                </div>
+            </article>
+
+            <article class="log rise" data-track="porto">
+                <div class="log-meta">
+                    <span class="log-version">v1.1</span>
+                    <span class="log-track">Project Porto</span>
+                    <span class="log-date">September 2026</span>
+                    <span class="log-no">11</span>
+                </div>
+                <div class="log-body">
+                    <h3 class="log-title">Doors, and the river</h3>
+                    <p>Getting into a car used to teleport you to the wheel. Now it is a sequence: walk to the door, open it (0.7 s), sit down (1.3 s, first backing onto the seat then turning forward), close it (0.5 s). The door rotates on its hinge, the body uses the new Sitting_Enter and Driving_Loop clips, and getting out runs the same backwards. Your own character drives, not a traffic NPC.</p>
+                    <p>The river used to be a colour: fall off the quay and you stood on the bottom. Now there is water: more than 1.2 m deep and you swim, the head stays above water with a slow bob, rings spread from every stroke and splash, and you climb out where the edge is low enough. A high quay (5 m) means you swim to the stairs. Rings do not bounce off the quays; that is the trade for having them everywhere.</p>
+                    <p>New animations had to be cooked from the FBX (Swim_Idle_Loop, Swim_Fwd_Loop, Sitting_Enter, Sitting_Exit, Interact) without rebuilding the city, writing only the new matrices and updating where they start. No hand IK yet: the hand does the Interact gesture roughly where the handle is, and the feet land where Driving_Loop puts them.</p>
+                </div>
+                <div class="log-shots" data-shots="2">
+                    <figure>
+                        <img src="porto/porto-drive.jpg"
+                             alt="Getting into a car"
+                             loading="lazy" width="1280" height="720">
+                    </figure>
+                    <figure>
+                        <img src="porto/porto-swim.jpg"
+                             alt="Swimming in the Douro"
+                             loading="lazy" width="1280" height="720">
+                    </figure>
+                </div>
+            </article>
+
 
             <article class="log rise" data-track="game">
                 <div class="log-meta">
