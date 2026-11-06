@@ -2314,3 +2314,98 @@ main > .section:last-child {
     background: #3576a8;
     color: #fff;
 }
+
+/* ---- Gallery mosaic (porto.html): blocks of different sizes, captions on hover ---- */
+.gallery.gallery-mosaic {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-rows: clamp(7rem, 15vw, 13rem);
+    grid-auto-flow: dense;
+}
+
+.gallery-mosaic figure {
+    position: relative;
+    isolation: isolate;
+}
+
+.gallery-mosaic .big  { grid-column: span 2; grid-row: span 2; }
+.gallery-mosaic .wide { grid-column: span 2; grid-row: span 1; }
+.gallery-mosaic .tall { grid-column: span 1; grid-row: span 2; }
+
+.gallery-mosaic img,
+.gallery-mosaic .wide img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    object-fit: cover;
+    transform: scale(1.001);
+    transition: transform 1.1s var(--ease), filter 0.5s ease;
+}
+
+.gallery-mosaic figure:hover img,
+.gallery-mosaic figure:focus-within img {
+    transform: scale(1.07);
+}
+
+.gallery-mosaic figure::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(to top, rgba(8, 10, 18, 0.72), rgba(8, 10, 18, 0) 55%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.gallery-mosaic figcaption {
+    position: absolute;
+    left: 0.9rem;
+    right: 0.9rem;
+    bottom: 0.8rem;
+    z-index: 2;
+    color: #fff;
+    font-family: "Inter Tight", "Inter", sans-serif;
+    font-weight: 700;
+    font-size: clamp(0.8rem, 1.1vw, 1rem);
+    letter-spacing: 0.01em;
+    transform: translateY(8px);
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.5s var(--ease);
+    pointer-events: none;
+}
+
+.gallery-mosaic figure:hover::after,
+.gallery-mosaic figure:hover figcaption,
+.gallery-mosaic figure:focus-within::after,
+.gallery-mosaic figure:focus-within figcaption {
+    opacity: 1;
+    transform: none;
+}
+
+/* Touch screens have no hover: keep the captions visible */
+@media (hover: none) {
+    .gallery-mosaic figure::after,
+    .gallery-mosaic figcaption {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@media (max-width: 800px) {
+    .gallery.gallery-mosaic {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: clamp(7rem, 30vw, 12rem);
+    }
+
+    .gallery-mosaic .big  { grid-column: 1 / -1; grid-row: span 2; }
+    .gallery-mosaic .wide { grid-column: 1 / -1; grid-row: span 1; }
+    .gallery-mosaic .tall { grid-column: span 1; grid-row: span 2; }
+
+    .gallery-mosaic .wide img,
+    .gallery-mosaic img {
+        position: absolute;
+        height: 100%;
+    }
+}
