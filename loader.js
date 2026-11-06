@@ -1,19 +1,20 @@
 /* =============================================================================
-   Loader — a herd of Lusitano horses at a gallop
+   Loader  -  a Ribeira at dusk, drawn as it loads
    -----------------------------------------------------------------------------
-   Drawn as SVG rather than images: the body is one silhouette and each leg is
-   its own group, rotated from the shoulder or hip. That gives a real gait at
-   any size, with nothing extra to download.
+   The logo (the stone H, the bridge, the Douro) rises first, the name is set
+   letter by letter, and a row of Ribeira houses grows along the bottom while
+   their windows light up one by one. When the page is ready the whole curtain
+   leaves as a wave of azulejo tiles.
 
-   The horses run in three ranks at different scales, speeds and opacities,
-   which reads as depth rather than a row.
+   Everything is drawn here or in CSS: nothing extra to download except the
+   logo mark the site already uses.
    ========================================================================== */
 
 (() => {
     const loader = document.getElementById('loader');
     if (!loader) return;
 
-    /* The herd is a first-impression, not a toll gate. Once it has been seen
+    /* The intro is a first impression, not a toll gate. Once it has been seen
        in this session, every page after it opens straight onto the work --
        which is what someone reading three devlog entries in a row wants. */
     let seen = false;
@@ -25,149 +26,122 @@
         return;
     }
 
-    /* -------------------------------------------------------------------------
-       One horse, facing right, viewBox 0 0 140 100.
+    /* --- Layers, back to front: tiles, glow, houses, logo, name ------------ */
+    const tiles = document.createElement('div');
+    tiles.className = 'loader-tiles';
+    tiles.setAttribute('aria-hidden', 'true');
 
-       The outline is traced the way you'd draw one: tail base → croup →
-       back → withers → crest of the neck → poll → face → muzzle → under the
-       jaw → throat → chest → belly → flank → back to the tail.
-       ---------------------------------------------------------------------- */
-    const horse = () => `
-<svg class="horse" viewBox="0 0 140 100" aria-hidden="true">
-  <g class="horse-rig">
-
-    <!-- off-side legs first, so they read as being behind the body.
-         Each leg carries its own hoof so it rotates with the limb. -->
-    <g class="leg leg-oh" style="transform-origin:34px 46px">
-      <path d="M28 40 L25 56 Q24 60 28 64 L26 82 L25 88 L31 88 L32 82 L35 64
-               Q37 60 34 56 L38 42 Z"/>
-      <path class="hoof" d="M24 87 L33 87 L32 93 L23 93 Z"/>
-    </g>
-    <g class="leg leg-of" style="transform-origin:70px 44px">
-      <path d="M65 40 L63 60 L61 78 L60 88 L66 88 L67 78 L70 60 L72 42 Z"/>
-      <path class="hoof" d="M59 87 L68 87 L67 93 L58 93 Z"/>
-    </g>
-
-    <!-- Tail. The Lusitano carries a full one, and at a gallop it streams. -->
-    <path class="tail" d="
-      M24 38
-      C16 35 9 39 4 47
-      C10 44 14 44 17 45
-      C11 49 6 55 3 63
-      C10 55 16 51 21 50
-      C18 55 16 60 15 65
-      C20 57 24 51 25 46
-      Z"/>
-
-    <!-- Body, neck and head as a single silhouette.
-         Traced the way you'd draw one: croup → back → withers → up the
-         crest → poll → face → muzzle → under the jaw → throat → chest →
-         belly → flank. Keeping the neck a clear diagonal band and the head
-         a distinct wedge is what makes it read at small sizes. -->
-    <path class="body" d="
-      M22 42
-      C22 32 30 27 44 26
-      C53 25 60 26 64 29
-      L92 13
-      C96 11 100 11 103 13
-      L116 21
-      C119 23 119 28 115 29
-      L104 27
-      C98 26 93 27 89 30
-      L73 45
-      C71 49 70 53 69 57
-      C67 60 63 61 57 61
-      C45 62 32 60 26 56
-      C22 53 21 47 22 42
-      Z"/>
-
-    <!-- The mane. The Lusitano's is long and abundant — it's the feature
-         that identifies the breed, so it sits OUTSIDE the neck outline and
-         streams backwards at a gallop rather than hugging the crest. -->
-    <!-- The mane must sit ON the crest, never wander off it.
-         The crest of the neck runs from the withers (64,29) to the poll
-         (~96,11). The path below travels the OUTER edge from poll to
-         withers, then returns along that exact line — so both ends are
-         anchored to the neck and nothing floats free. -->
-    <path class="mane" d="
-      M96 11
-      C88 5 78 7 70 13
-      C72 16 71 19 69 21
-      C64 17 60 19 57 23
-      C60 25 61 27 61 30
-      C62 29 63 29 64 29
-      L96 11
-      Z"/>
-
-    <!-- near-side legs -->
-    <g class="leg leg-nh" style="transform-origin:30px 46px">
-      <path d="M24 40 L21 56 Q20 60 24 64 L22 84 L21 90 L27 90 L28 84 L31 64
-               Q33 60 30 56 L34 42 Z"/>
-      <path class="hoof" d="M20 89 L29 89 L28 95 L19 95 Z"/>
-    </g>
-    <g class="leg leg-nf" style="transform-origin:66px 44px">
-      <path d="M61 40 L59 60 L57 80 L56 90 L62 90 L63 80 L66 60 L68 42 Z"/>
-      <path class="hoof" d="M55 89 L64 89 L63 95 L54 95 Z"/>
-    </g>
-
-  </g>
-</svg>`;
-
-    /* --- Two ranks. -------------------------------------------------------
-       Was three ranks of ten horses. At under a second nobody reads ten
-       animals -- it just registers as busy, and busy is what wears out on
-       the fifth visit. Four horses still give depth and gait; the name
-       carries the rest. */
-    const ranks = [
-        { cls: 'rank-back',  count: 2 },
-        { cls: 'rank-front', count: 2 }
-    ];
-
-    const herd = document.createElement('div');
-    herd.className = 'herd';
-
-    ranks.forEach((rank, r) => {
-        const row = document.createElement('div');
-        row.className = `rank ${rank.cls}`;
-
-        for (let i = 0; i < rank.count; i++) {
-            const runner = document.createElement('div');
-            runner.className = 'runner';
-
-            // Keep the herd BUNCHED rather than evenly spaced. The starting
-            // points sit close together, so they cross the strip as one
-            // group — which is how a herd actually moves. With only two per
-            // rank the gap is taken straight, not divided by the count, or
-            // they end up overlapping.
-            const spread = 0.13;   // how far apart, as a fraction of the loop
-            const along = 0.30 + (i * spread) + (r * 0.06);
-            runner.style.setProperty('--start', `${-along.toFixed(3)}`);
-
-            // Desynchronise the gait so they don't move as one animal.
-            runner.style.setProperty('--phase', `${-((i * 0.13 + r * 0.07) % 0.62).toFixed(3)}s`);
-
-            runner.innerHTML = horse();
-            row.appendChild(runner);
+    // The tile size aims for about 120px, so the wipe feels the same on a
+    // phone and on a wide monitor.
+    const cols = Math.max(5, Math.ceil(window.innerWidth / 120));
+    const rows = Math.max(5, Math.ceil(window.innerHeight / 120));
+    tiles.style.setProperty('--cols', cols);
+    tiles.style.setProperty('--rows', rows);
+    for (let y = 0; y < rows; y++) {
+        for (let x = 0; x < cols; x++) {
+            const t = document.createElement('i');
+            // Distance from the centre decides when each tile leaves, so the
+            // wipe opens outwards from the logo.
+            const dx = (x + 0.5) / cols - 0.5;
+            const dy = (y + 0.5) / rows - 0.5;
+            t.style.setProperty('--out', `${Math.round(Math.hypot(dx, dy) * 520)}ms`);
+            tiles.appendChild(t);
         }
-        herd.appendChild(row);
-    });
+    }
+    loader.prepend(tiles);
 
-    loader.querySelector('.loader-stage').appendChild(herd);
+    const glow = document.createElement('div');
+    glow.className = 'loader-glow';
+    glow.setAttribute('aria-hidden', 'true');
+    loader.appendChild(glow);
+
+    /* --- The Ribeira ------------------------------------------------------
+       Houses of different widths and heights, each with a coloured facade, a
+       roof and a few windows. The sequence is fixed (a small seeded random),
+       so the skyline is the same every time it is seen. */
+    const palette = ['#d9a441', '#c8553d', '#2f7f79', '#e8c547', '#2a6592', '#e6d6be', '#b9604a', '#5c8f5a'];
+    let seed = 7;
+    const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+
+    const W = 720, H = 150, GROUND = 120;
+    let x = -10, i = 0, houses = '', lit = '';
+    while (x < W + 10) {
+        const w = 38 + Math.floor(rnd() * 34);
+        const h = 34 + Math.floor(rnd() * 56);
+        const color = palette[Math.floor(rnd() * palette.length)];
+        const top = GROUND - h;
+        const delay = (i * 0.045).toFixed(2);
+        // Roof: a low pitched cap, darker than the facade.
+        houses += `<g class="house" style="--d:${delay}s">`
+            + `<rect x="${x}" y="${top}" width="${w}" height="${h}" fill="${color}"/>`
+            + `<path d="M${x - 2} ${top} L${x + w / 2} ${top - 9} L${x + w + 2} ${top} Z" fill="#7a2f26"/>`;
+        // Windows in a grid, some of them lit.
+        const wc = Math.max(2, Math.floor(w / 15));
+        const wr = Math.max(2, Math.floor(h / 20));
+        for (let r = 0; r < wr; r++) {
+            for (let c = 0; c < wc; c++) {
+                const wx = x + 6 + c * ((w - 12) / wc) + ((w - 12) / wc - 7) / 2;
+                const wy = top + 8 + r * 17;
+                if (wy + 11 > GROUND - 3) continue;
+                const on = rnd() > 0.35;
+                houses += `<rect x="${wx.toFixed(1)}" y="${wy}" width="7" height="11" fill="#141a2b"/>`;
+                if (on) {
+                    const t = (1.0 + rnd() * 1.4).toFixed(2);
+                    lit += `<rect class="win" x="${wx.toFixed(1)}" y="${wy}" width="7" height="11" style="--t:${t}s"/>`;
+                }
+            }
+        }
+        houses += '</g>';
+        x += w + 2;
+        i++;
+    }
+
+    const stage = loader.querySelector('.loader-stage');
+    stage.innerHTML = `<svg class="skyline" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMax slice" aria-hidden="true">`
+        + `<g class="town">${houses}<g class="lights">${lit}</g></g>`
+        + `<g class="mirror" transform="translate(0 ${GROUND * 2}) scale(1 -1)">${houses}</g>`
+        + `<rect x="0" y="${GROUND}" width="${W}" height="${H - GROUND}" class="river"/>`
+        + `<g class="waves">`
+        + [0, 1, 2].map(n => `<path d="M0 ${GROUND + 8 + n * 8} q 30 -5 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0 t 60 0"`
+            + ` style="--w:${n}"/>`).join('')
+        + `</g></svg>`;
+
+    /* --- The mark and the name --------------------------------------------- */
+    const name = loader.querySelector('.loader-name');
+    if (name) {
+        name.setAttribute('aria-label', 'Hordalusa');
+        name.innerHTML = [...'HORDALUSA']
+            .map((ch, n) => `<span aria-hidden="true" style="--i:${n}">${ch}</span>`)
+            .join('');
+
+        const mark = document.createElement('img');
+        mark.className = 'loader-mark';
+        mark.src = 'brand/logo-mark.png';
+        mark.alt = '';
+        mark.width = 130;
+        mark.height = 128;
+        name.before(mark);
+
+        const tag = document.createElement('div');
+        tag.className = 'loader-tag';
+        tag.textContent = 'Project Porto';
+        loader.appendChild(tag);
+    }
 
     /* --- Dismiss -----------------------------------------------------------
        Deliberately NOT waiting on window.load. That event waits for every
        image on the page, and the renders here run to a couple of megabytes --
-       which turned the loader into a download progress bar.
+       which would turn the intro into a download progress bar.
 
        The page is readable as soon as the document is parsed; the images
        arrive behind it, in their own time, into space already reserved by
        their width/height attributes. So the curtain lifts on DOMContentLoaded
-       and the hold is short and fixed.
+       once the intro has had time to play, and the hold is fixed.
 
        Anyone who has already seen it this session skips it entirely.
        ---------------------------------------------------------------------- */
     const SEEN = 'hl-seen';
-    const MIN_MS = 900;
+    const MIN_MS = 2200;
     const started = performance.now();
     let done = false;
 
@@ -176,10 +150,14 @@
         done = true;
         const wait = Math.max(0, MIN_MS - (performance.now() - started));
         setTimeout(() => {
-            loader.classList.add('done');
-            document.body.classList.remove('loading');
-            try { sessionStorage.setItem(SEEN, '1'); } catch (e) { /* private mode */ }
-            setTimeout(() => loader.remove(), 700);
+            loader.classList.add('leaving');
+            // The content fades first, then the tiles leave, outwards.
+            setTimeout(() => {
+                loader.classList.add('done');
+                document.body.classList.remove('loading');
+                try { sessionStorage.setItem(SEEN, '1'); } catch (e) { /* private mode */ }
+                setTimeout(() => loader.remove(), 1300);
+            }, 380);
         }, wait);
     };
 
@@ -187,5 +165,5 @@
     else document.addEventListener('DOMContentLoaded', dismiss);
 
     // Never trap anyone behind the loader if a script above us throws.
-    setTimeout(dismiss, 2500);
+    setTimeout(dismiss, 4000);
 })();
