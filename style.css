@@ -1665,7 +1665,7 @@ p {
 }
 
 .feature-tile.is-porto {
-    background: var(--river) url("thumbs/porto-ribeira-walk.jpg") 62% 70% / cover no-repeat;
+    background: var(--river) url("thumbs/porto-ride-bridge.jpg") 62% 55% / cover no-repeat;
     position: relative;
     overflow: hidden;
 }
