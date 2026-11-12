@@ -118,6 +118,70 @@
 
             <article class="log rise" data-track="porto">
                 <div class="log-meta">
+                    <span class="log-version">v1.6</span>
+                    <span class="log-track">Project Porto</span>
+                    <span class="log-date">November 2026</span>
+                    <span class="log-no">16</span>
+                </div>
+                <div class="log-body">
+                    <h3 class="log-title">Pavements, and light indoors</h3>
+                    <p>Many shop fronts had grass growing right up to the door. The map simply had no pavement there: the building sat straight on the terrain, and the terrain is green. The fix lives in the map generator, not in the game. Draw the city from above at one pixel per 0.5 m, measure how far every point is from the nearest building and the nearest road, and pave a 2 m strip along every road with houses nearby, plus the little yard between the road and a front wall less than 6.5 m away. The terrain underneath is dug out so it never pokes through.</p>
+                    <p>That adds 612,000 m&sup2; of new Portuguese pavement, three shades of limestone with a granite edge, and 313 of the 348 shops now have it at the door. The other 21 sit on slopes that need stairs, not pavement, or more than 50 m from a road. Embankments stay grass. Inside the shops, the hillside terrain no longer shows through the floor either.</p>
+                    <p>Then the light. Rooms looked flat because every interior was lit by the whole sky, as if it had no ceiling. Now the game tells the renderer where each room is, and inside that box the sky only comes in through the shop window: 65% at the glass, fading to 10% at the back wall. What is missing comes from the lamps themselves, a soft bounce of their colour, and the corners and the feet of the furniture finally get contact shadows. The difference is moderate, you notice it side by side. Honest limits: the bounce is uniform, so a red wall does not tint the floor, and the lamps still cast no shadows of their own.</p>
+                </div>
+                <div class="log-shots" data-shots="3">
+                    <figure>
+                        <img src="porto/porto-pavement-street.jpg"
+                             alt="A street that had no pavement, now with a 2 m one on each side"
+                             loading="lazy" width="1280" height="720">
+                    </figure>
+                    <figure>
+                        <img src="porto/porto-light-before.jpg"
+                             alt="Inside a pastry shop before: walls equally bright from end to end"
+                             loading="lazy" width="1280" height="720">
+                    </figure>
+                    <figure>
+                        <img src="porto/porto-light-after.jpg"
+                             alt="The same shop after: darker towards the back, shadows in the corners"
+                             loading="lazy" width="1280" height="720">
+                    </figure>
+                </div>
+            </article>
+
+            <article class="log rise" data-track="porto">
+                <div class="log-meta">
+                    <span class="log-version">v1.5</span>
+                    <span class="log-track">Project Porto</span>
+                    <span class="log-date">November 2026</span>
+                    <span class="log-no">15</span>
+                </div>
+                <div class="log-body">
+                    <h3 class="log-title">A pastry shop that works like one</h3>
+                    <p>The 14 pastry shops on the map used to be caf&eacute;s with another name. The game only knew two spots inside: where the shopkeeper stands and where the customer stands. A delivery box landed halfway between them, usually on top of the till. And nothing stopped you from walking behind the counter.</p>
+                    <p>Now the pastry shop has a profile, a recipe that says which zones it needs and how much room each one takes, and the generator fits that recipe into the real room the building gives it. There is an entrance, a queue marked on the floor, the till where you pay, a pick-up corner with its own sign where deliveries wait, the display case, the tables, the work strip behind the counter, and a no-access zone: a wooden half-door now keeps you out of the kitchen. Depending on the room you get the counter at the back, to the side, or a compact one; the survey gave 9, 1 and 4. Each shop has a fixed seed, so leaving and coming back always gives the same layout.</p>
+                    <p>The display case has its own action. Stand in front of it, press F to look at the cakes, and a panel shows what is on sale and the prices, but it does not sell: to order, you go to the till, as in a real pastelaria. At night a closed shop dims its lights to 12%, and from the street you can see the room go dark behind the glass. Honest limits: only pastry shops have a profile so far, and pedestrians do not queue yet.</p>
+                </div>
+                <div class="log-shots" data-shots="3">
+                    <figure>
+                        <img src="porto/porto-pastry-zones.jpg"
+                             alt="A pastry shop: the counter, the display case and the queue marked on the floor"
+                             loading="lazy" width="1280" height="720">
+                    </figure>
+                    <figure>
+                        <img src="porto/porto-pastry-vitrine.jpg"
+                             alt="Looking at the cakes: a panel lists the pastel de nata, coffee and water with prices"
+                             loading="lazy" width="1280" height="720">
+                    </figure>
+                    <figure>
+                        <img src="porto/porto-pastry-closed.jpg"
+                             alt="A closed pastry shop at night, seen dimly from the street"
+                             loading="lazy" width="1280" height="720">
+                    </figure>
+                </div>
+            </article>
+
+            <article class="log rise" data-track="porto">
+                <div class="log-meta">
                     <span class="log-version">v1.4</span>
                     <span class="log-track">Project Porto</span>
                     <span class="log-date">November 2026</span>
